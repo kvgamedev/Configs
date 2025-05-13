@@ -7,15 +7,23 @@ return {
 		},
 
 		config = function()
-			local servers = { "clangd", "lua_ls" }
+			local servers = { "clangd", "lua_ls", "pyright" }
 
 			for _, server_name in ipairs(servers) do
 				vim.lsp.enable(server_name)
 			end
 
-			vim.keymap.set("n", "<leader>xi", function()
-				vim.lsp.inlay_hint(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-			end, { desc = "Show Inlay Hints" })
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+				callback = function(event)
+					local map = vim.keymap.set
+					map("n", "<leader>xi", function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+					end, { desc = "Show Inlay Hints" })
+
+					map("n", "gld", vim.lsp.buf.definition, { desc = "Go to Definition" })
+				end,
+			})
 
 			vim.diagnostic.config({
 				severity_sort = true,
@@ -49,7 +57,6 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
 			"L3MON4D3/LuaSnip",
 		},
 
@@ -58,9 +65,12 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			keymap = { preset = "default" },
+
 			appearance = {
 				nerd_font_variant = "mono",
 			},
+
+			snippets = { preset = "luasnip" },
 
 			completion = { documentation = { auto_show = false } },
 
@@ -114,5 +124,9 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
+
+		config = function()
+			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
+		end,
 	},
 }

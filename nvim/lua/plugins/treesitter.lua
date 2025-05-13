@@ -2,9 +2,8 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = "TSUpdate",
-		opts = 
-		{
-			ensure_installed = { "c", },
+		opts = {
+			ensure_installed = { "c" },
 			auto_install = true,
 			highlight = {
 				enable = true,
@@ -19,6 +18,6 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("treesitter-context").setup()
-		end
+		end,
 	},
 }
