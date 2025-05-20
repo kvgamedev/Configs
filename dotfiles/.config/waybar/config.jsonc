@@ -1,0 +1,63 @@
+{
+	"modules-left": [ "clock", "idle_inhibitor"],
+	"modules-center": [ "hyprland/workspaces" ],
+	"modules-right": [ "network", "backlight", "pulseaudio", "battery" ],
+
+	"clock": {
+		"format": "󰣇 {:%H:%M}",
+		"tooltip": true,
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "month"
+		}
+	},
+
+	"hyprland/window": {
+		"format": "<span weight='1000'>{title}</span>"
+	},
+
+	"hyprland/workspaces": {
+		"show-special": true,
+		"special-visible-only": true
+	},
+
+	"idle_inhibitor": {
+
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "󰅶",
+			"deactivated": "󰛊"
+		}
+	},
+	
+	"battery": {
+		"format-icons": {
+			"default": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹" ]
+		},
+		"format": "{icon}{capacity}",
+		"states": {
+			"warning": 40,
+			"critical": 20,
+			"okay": 80
+		}
+	},
+
+	"backlight": {
+		"format": "{icon}",
+		"format-icons": ["󰽤","","","","","","","","","","","","","","󰽢"]
+	},
+
+	"network": {
+		"format": "{icon}",
+		"format-icons": ["󰤟","󰤢","󰤥"]
+	},
+	"pulseaudio": {
+		"format": "{icon}   {volume}",
+		"states": {
+			"novolume": 0
+		},
+		"format-icons": [""],
+		"format-muted": "",
+		"format-novolume": ""
+	}
+}
