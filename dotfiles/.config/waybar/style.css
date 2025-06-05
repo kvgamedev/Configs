@@ -2,7 +2,7 @@
 
 * {
 	font-family: "Noto Sans";
-	font-size: 18px;
+	font-size: 16;
 	font-weight: bolder;
 	margin: 0;
 	padding: 0;
@@ -11,62 +11,79 @@
 window#waybar {
 	background: transparent;
 	color: @primary_fixed_dim;
-	margin: 0;
-	padding: 0;
 }
 
 .modules-right,
 .modules-left,
 .modules-center {
-	margin: 4 30 2;
-	padding: 0 20;
+	margin: 3 8 0 8;
+}
+
+.modules-right,
+#window,
+#clock,
+#workspaces,
+#workspaces button,
+#cpu,
+#memory,
+#idle_inhibitor {
+	border-radius: 50;
+	background: alpha(@on_primary_fixed, 1.0);
+}
+
+.modules-right,
+#window,
+#clock,
+#workspaces,
+#cpu,
+#memory,
+#idle_inhibitor {
+	border: 2px solid @primary_fixed_dim;
 }
 
 #window,
 #clock,
 #workspaces,
+#cpu,
+#memory,
 #idle_inhibitor{
-	background: alpha(@on_primary_fixed, 0.3);
-	border-radius: 30px;
-	padding: 0 5 0 5;
-	border: 2px solid @primary_fixed_dim;
+	padding: 0 8;
+	margin: 0 2;
 }
-#window {
-	padding: 0 20;
-}
+
+#window,
 #clock {
-	padding: 0 20;
+	padding: 0 15;
 }
+
 #idle_inhibitor {
-	padding: 0 20 0 15;
+	padding: 0 15 0 11;
 }
+
 #workspaces {
-	background: alpha(@on_primary_fixed, 0.3);
-	padding: 2;
+	margin: 0 20;
+	padding: 0;
 }
+
 #workspaces button {
 	color: @primary_fixed_dim;
-	padding: 0 7;
-	background: transparent;
-	border-radius: 30;
-	margin: 2;
-
+	padding: 0 5;
 }
+
 #workspaces button.active,
 #workspaces button.visible {
-	margin: 2;
 	color: @on_primary_fixed;
 	background: @primary_fixed_dim;
 	padding: 0 10;
-	border-radius: 30px;
 }
+
 #battery,
 #backlight,
 #network,
 #pulseaudio {
-	margin: 0 8 0;
-	font-size: 16px;
+	margin: 0 8;
 }
+
 #battery.critical {
 	color: red;
 }
@@ -74,7 +91,5 @@ window#waybar {
 	color: yellow;
 }
 .modules-right {
-	border: 2px solid @primary_fixed_dim;
-	background: alpha(@on_primary_fixed, 0.3);
-	border-radius: 30px;
+	padding: 0 5;
 }
