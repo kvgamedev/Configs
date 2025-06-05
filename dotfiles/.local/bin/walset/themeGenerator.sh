@@ -3,7 +3,8 @@
 CACHE_FILE="$HOME/.local/bin/walset/.cache/mode_cache"
 CACHE_MODE="$(cat $CACHE_FILE)"
 MODE=""
-IMAGE="$(swww query | grep -oP 'image: \K.*')"
+# IMAGE="$(swww query | grep -oP 'image: \K.*')"
+IMAGE="$(hyprctl hyprpaper listloaded)"
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -27,7 +28,8 @@ if [[ ! -f "$IMAGE" ]]; then
     exit 1
 fi
 
-swww img "$IMAGE" --transition-type=none
+# swww img "$IMAGE" --transition-type=none
+hyprctl hyprpaper reload ,"$IMAGE"
 
 if [ -z "$MODE" ]; then
     if [ -z "$CACHE_MODE" ]; then

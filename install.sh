@@ -5,9 +5,9 @@ PACMAN_PACKAGES=(
 	base-devel
 	neovim
 	fzf
+	dunst
 	lazygit
 	rofi-wayland
-	swww
 	noto-fonts
 	noto-fonts-extra
 	noto-fonts-emoji
@@ -16,21 +16,21 @@ PACMAN_PACKAGES=(
 	cliphist
 	fastfetch
 	waybar
-	base-devel
 	brightnessctl
 	libnotify
 	7zip
 	hypridle
 	hyprsunset
 	hyprlock
-	tmux
+	hyprpaper
 	keyd
 	fish
 	lf
 	nautilus
 	ghostty
 	mission-center
-	zig
+	wev
+	git-lfs
 )
 
 AUR_PACKAGES=(
@@ -39,15 +39,20 @@ AUR_PACKAGES=(
 	brave-bin
 )
 
-sudo pacman -R dolphin
+DELETE_PACKAGES=(
+	dolphin
+)
+
 echo "Installing Packages..."
 sudo pacman -Syu --noconfirm --needed "${PACMAN_PACKAGES[@]}"
+sudo pacman -R --noconfirm "${DELETE_PACKAGES[@]}"
 
 echo "Installing Yay"
-git clone https://aur.archlinux.org/yay-bin.git ~/yay-bin
-cd ~/yay-bin
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si
-cd ~/
+cd ~
 rm -rf ~/yay-bin
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
