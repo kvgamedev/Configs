@@ -31,6 +31,7 @@ PACMAN_PACKAGES=(
 	mission-center
 	wev
 	git-lfs
+	fd
 )
 
 AUR_PACKAGES=(

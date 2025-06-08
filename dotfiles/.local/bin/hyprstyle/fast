@@ -1,0 +1,8 @@
+$border_size = 0
+$gaps_in = 0
+$gaps_out = 0
+$rounding = 0
+$blur = false
+$shadow = false
+$opacity = 1
+$animations = no

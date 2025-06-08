@@ -1,9 +1,14 @@
 #!/bin/bash
 
-CACHE_FILE="$HOME/.local/bin/walset/.cache/mode_cache"
+CACHE_FILE="$HOME/.local/bin/walset/.cache"
+
+if [ ! -f $CACHE_FILE ]; then
+    touch $CACHE_FILE
+    echo "dark" > "$CACHE_FILE"
+fi
+
 CACHE_MODE="$(cat $CACHE_FILE)"
 MODE=""
-# IMAGE="$(swww query | grep -oP 'image: \K.*')"
 IMAGE="$(hyprctl hyprpaper listloaded)"
 
 while [[ $# -gt 0 ]]; do
@@ -23,21 +28,15 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-if [[ ! -f "$IMAGE" ]]; then
-    echo "Error: Image file '$IMAGE' does not exist."
+if [ ! -f "$IMAGE" ]; then
+    echo "Error: Image file $IMAGE does not exist."
     exit 1
 fi
 
-# swww img "$IMAGE" --transition-type=none
 hyprctl hyprpaper reload ,"$IMAGE"
 
 if [ -z "$MODE" ]; then
-    if [ -z "$CACHE_MODE" ]; then
-        matugen -m "dark" image "$IMAGE"
-        echo "dark" > "$CACHE_FILE"
-    else
-        matugen -m "$CACHE_MODE" image "$IMAGE"
-    fi
+    matugen -m "$CACHE_MODE" image "$IMAGE"
 else
     matugen -m "$MODE" image "$IMAGE"
     echo "$MODE" > "$CACHE_FILE"
