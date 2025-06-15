@@ -1,0 +1,195 @@
+@import "../colors.rasi"
+
+* {
+	urgent: red;
+    roundness: 20px;
+    font: "JetbrainsMono Nerd Font 10";
+}
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons: true;
+    terminal: "true";
+}
+
+/*****----- Main Window -----*****/
+window {
+    /* properties for window widget */
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 56em;
+    height: 28em;
+    x-offset: 0em;
+    y-offset: 0em;
+    // padding: 0.2em;
+    /* properties for all widgets */
+    enabled: true;
+    border: 2px;
+    border-radius: @roundness;
+    border-color: @primary;
+    cursor: "default";
+    background-color: @primary-container;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled: true;
+    spacing: 0em;
+    background-color: transparent;
+    orientation: horizontal;
+    children: [ "imagebox", "listbox" ];
+}
+
+imagebox {
+    padding: 1em;
+    border-radius: @roundness;
+    background-color: transparent;
+    background-image: @image-height;
+    orientation: vertical;
+    children: [ "inputbar", "dummy" ];
+}
+
+listbox {
+    spacing: 2em;
+    padding: 2em;
+    background-color: transparent;
+    orientation: vertical;
+    children: [ "message", "listview" ];
+}
+
+dummy {
+    background-color: transparent;
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled: true;
+    spacing: 1em;
+    padding: 0.5em;
+    border-radius: @roundness;
+    background-color: @secondary-container;
+    text-color: @primary;
+    // children: [ "textbox-prompt-colon", "entry" ];
+    children: [ "entry" ];
+}
+textbox-prompt-colon {
+    enabled: true;
+    expand: false;
+    str: "";
+    background-color: inherit;
+    text-color: inherit;
+}
+entry {
+    enabled: true;
+    background-color: inherit;
+    text-color: inherit;
+    cursor: text;
+    placeholder: "Search";
+    placeholder-color: inherit;
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled: true;
+    spacing: 20px;
+    background-color: transparent;
+    text-color: @primary;
+}
+button {
+    padding: 15px;
+    border-radius: @roundness;
+    background-color: @secondary-container;
+    text-color: inherit;
+    cursor: pointer;
+}
+button selected {
+    background-color: @inverse-primary;
+    text-color: @primary;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled: true;
+    columns: 1;
+    lines: 8;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing: 0.5em;
+    background-color: transparent;
+    text-color: @primary;
+    cursor: "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled: true;
+    spacing: 1em;
+    padding: 0.5em;
+    border-radius: @roundness;
+    background-color: transparent;
+    text-color: @primary;
+    cursor: pointer;
+}
+element normal.normal {
+    background-color: inherit;
+    text-color: inherit;
+}
+element normal.urgent {
+    background-color: @urgent;
+    text-color: @primary;
+}
+element normal.active {
+    background-color: @tertiary-container;
+    text-color: @primary;
+}
+element selected.normal {
+    background-color: @inverse-primary;
+    text-color: @primary;
+}
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @primary;
+}
+element selected.active {
+    background-color: @urgent;
+    text-color: @primary;
+}
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 1em;
+    cursor: inherit;
+}
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+/*****----- Message -----*****/
+message {
+    background-color: transparent;
+}
+textbox {
+    padding: 1em;
+    border-radius: @roundness;
+    background-color: @secondary-container;
+    text-color: @primary;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+error-message {
+    padding: 1em;
+    border-radius: @roundness;
+    background-color: @primary-container;
+    text-color: @primary;
+}

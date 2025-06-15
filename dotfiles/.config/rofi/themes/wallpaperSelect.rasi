@@ -1,4 +1,4 @@
-@import "colors.rasi"
+@import "../colors.rasi"
 
 * {
 	background-color: transparent;
@@ -7,7 +7,7 @@
 
 window {
 	fullscreen:       true;
-	background-color: black/80%;
+	background-color: black/70%;
 	padding:          1em;
 	children:         [ wrap, listview-split];
 	spacing:          1em;

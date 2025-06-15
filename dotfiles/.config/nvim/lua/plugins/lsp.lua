@@ -6,7 +6,7 @@ return {
 		},
 
 		config = function()
-			local servers = { "clangd", "lua_ls", "bashls", "marksman", "pyright", "zls" }
+			local servers = { "clangd", "lua_ls", "bashls", "marksman", "pyright", "zls", "rust_analyzer", }
 
 			for _, server_name in ipairs(servers) do
 				vim.lsp.enable(server_name)

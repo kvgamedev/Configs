@@ -2,7 +2,7 @@
 
 * {
 	font-family: "Noto Sans";
-	font-size: 16;
+	font-size: 14;
 	font-weight: bolder;
 	margin: 0;
 	padding: 0;
@@ -10,13 +10,13 @@
 
 window#waybar {
 	background: transparent;
-	color: @primary_fixed_dim;
+	color: @primary;
 }
 
 .modules-right,
 .modules-left,
 .modules-center {
-	margin: 3 8 0 8;
+	margin: 6 8 0 8;
 }
 
 .modules-right,
@@ -27,8 +27,8 @@ window#waybar {
 #cpu,
 #memory,
 #idle_inhibitor {
-	border-radius: 50;
-	background: alpha(@on_primary_fixed, 1.0);
+	border-radius: 30;
+	background: alpha(@primary_container, 1.0);
 }
 
 .modules-right,
@@ -38,7 +38,7 @@ window#waybar {
 #cpu,
 #memory,
 #idle_inhibitor {
-	border: 2px solid @primary_fixed_dim;
+	border: 2px solid @primary;
 }
 
 #window,
@@ -53,6 +53,7 @@ window#waybar {
 
 #window,
 #clock {
+	font-size: 16;
 	padding: 0 15;
 }
 
@@ -66,14 +67,14 @@ window#waybar {
 }
 
 #workspaces button {
-	color: @primary_fixed_dim;
+	color: @primary;
 	padding: 0 5;
 }
 
 #workspaces button.active,
 #workspaces button.visible {
-	color: @on_primary_fixed;
-	background: @primary_fixed_dim;
+	color: @inverse_primary;
+	background: @primary;
 	padding: 0 10;
 }
 
