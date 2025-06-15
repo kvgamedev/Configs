@@ -1,14 +1,14 @@
 #!/bin/bash
 
-CACHE_FILE="$HOME/.local/bin/walset/.cache"
+MODE_CACHE_FILE="$HOME/.local/bin/walset/.mode"
+CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
 
-if [ ! -f $CACHE_FILE ]; then
-    touch $CACHE_FILE
-    echo "dark" > "$CACHE_FILE"
+if [ ! -f $MODE_CACHE_FILE ]; then
+    touch $MODE_CACHE_FILE
+    echo "dark" > "$MODE_CACHE_FILE"
 fi
 
-CACHE_MODE="$(cat $CACHE_FILE)"
-MODE=""
+MODE="$(cat $MODE_CACHE_FILE)"
 IMAGE="$(hyprctl hyprpaper listloaded)"
 
 while [[ $# -gt 0 ]]; do
@@ -35,12 +35,11 @@ fi
 
 hyprctl hyprpaper reload ,"$IMAGE"
 
-if [ -z "$MODE" ]; then
-    matugen -m "$CACHE_MODE" image "$IMAGE"
-else
-    matugen -m "$MODE" image "$IMAGE"
-    echo "$MODE" > "$CACHE_FILE"
-fi
+echo "preload = $IMAGE" > $CONFIG_FILE
+echo "wallpaper = , $IMAGE" >> $CONFIG_FILE
+
+matugen -m "$MODE" image "$IMAGE"
+echo "$MODE" > "$MODE_CACHE_FILE"
 
 pkill -SIGUSR2 waybar
 pkill -SIGUSR1 kitty
