@@ -1,7 +1,6 @@
 local o = vim.o
 local opt = vim.opt
 
-
 o.confirm = true
 o.timeout = true
 o.timeoutlen = 300
@@ -11,7 +10,7 @@ o.relativenumber = true
 o.cursorline = true
 
 o.termguicolors = true
-o.guicursor = "i:block-MiniStatusLineModeInsert,r:block-MiniStatusLineModeReplace,v:block-MiniStatuslineModeVisual"
+o.guicursor = "n:block-MiniStatuslineModeNormal,i:block-MiniStatusLineModeInsert,r:block-MiniStatusLineModeReplace,v:block-MiniStatuslineModeVisual"
 
 o.showmode = false
 o.mouse = "a"
@@ -22,7 +21,7 @@ o.scrolloff = 15
 o.ignorecase = true
 o.smartcase = true
 o.clipboard = "unnamedplus"
-o.colorcolumn = '80'
+o.colorcolumn = '100'
 o.splitbelow = true
 o.splitright = true
 o.list = true

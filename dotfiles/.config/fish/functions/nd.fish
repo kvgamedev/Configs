@@ -1,4 +1,4 @@
-function nd --wraps='cd (fd . -ut d | fzf) && nvim .' --description 'alias nd cd (fd . -ut d | fzf) && nvim .'
-  cd (fd . -ut d | fzf) && nvim . $argv
+function nd --wraps='cd (fzf --walker=dir,hidden) && nvim .' --description 'alias nd cd (fzf --walker=dir,hidden) && nvim .'
+  cd (fzf --walker=dir,hidden) && nvim . $argv
         
 end

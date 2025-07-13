@@ -28,6 +28,6 @@ mkdir "$config_loc"
 mkdir "$bin_loc"
 
 cd "$HOME/.config/"
-cp -r "${CONFIGS[@]}" "$config_loc"
 
+cp -r "${CONFIGS[@]}" "$config_loc"
 cp -r "$HOME/.local/bin/" "$bin_loc"
