@@ -1,43 +1,74 @@
 return {
 	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
+	    "mason-org/mason-lspconfig.nvim",
+	    event = "VeryLazy",
+	    opts = {},
+	    dependencies = {
+	        { "mason-org/mason.nvim", opts = {} },
+	        "neovim/nvim-lspconfig",
+	    },
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		depdendencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nvim-treesitter-context",
 		},
+	},
 
+	{
+		"stevearc/conform.nvim",
+		opts = {},
 		config = function()
-			local servers = { "clangd", "lua_ls", "bashls", "marksman", "pyright", "zls", "rust_analyzer", }
-
-			for _, server_name in ipairs(servers) do
-				vim.lsp.enable(server_name)
-			end
-
-			vim.diagnostic.config({
-				severity_sort = true,
-				float = { border = "rounded", source = "if_many" },
-				underline = { severity = vim.diagnostic.severity.ERROR },
-				signs = {
-					text = {
-						[vim.diagnostic.severity.ERROR] = "󰅚 ",
-						[vim.diagnostic.severity.WARN] = "󰀪 ",
-						[vim.diagnostic.severity.INFO] = "󰋽 ",
-						[vim.diagnostic.severity.HINT] = "󰌶 ",
-					},
+			require("conform").setup {
+				formatters_by_ft = {
+					lua = { "stylua" },
+					rust = { "rustfmt", lsp_format = "fallback" },
 				},
-				virtual_text = {
-					source = "if_many",
-					spacing = 2,
-					format = function(diagnostic)
-						local diagnostic_message = {
-							[vim.diagnostic.severity.ERROR] = diagnostic.message,
-							[vim.diagnostic.severity.WARN] = diagnostic.message,
-							[vim.diagnostic.severity.INFO] = diagnostic.message,
-							[vim.diagnostic.severity.HINT] = diagnostic.message,
-						}
-						return diagnostic_message[diagnostic.severity]
-					end,
-				},
+			}
+
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					require("conform").format { bufnr = args.buf }
+				end,
 			})
+		end,
+	},
+	{
+		"saghen/blink.cmp",
+		event = "VeryLazy",
+		dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
+		version = "1.*",
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = { preset = "default" },
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			snippets = { preset = "luasnip" },
+			completion = { documentation = { auto_show = false } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
+	},
+
+	{
+		"L3MON4D3/LuaSnip",
+		event = "VeryLazy",
+		version = "v2.*",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		config = function()
+			require("luasnip.loaders.from_vscode").load()
 		end,
 	},
 }

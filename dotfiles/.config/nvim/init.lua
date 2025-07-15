@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
+vim.g.localmapleader = " "
 
-require('config.keybinds')
-require('config.options')
-require('config.lazy')
+require("nvim.options")
+require("nvim.keybinds")
+require("nvim.autocmds")
+require("configs.lazy")

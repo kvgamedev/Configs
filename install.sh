@@ -33,10 +33,11 @@ PACMAN_PACKAGES=(
 	wev
 	git-lfs
 	fd
+	unzip
 )
 
 AUR_PACKAGES=(
-	matugen
+	matugen-bin
 	wlogout
 	brave-bin
 )

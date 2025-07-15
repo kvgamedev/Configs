@@ -9,13 +9,13 @@ CONFIGS=(
 	fish
 	fontconfig
 	ghostty
-	hypr
-	matugen
 	gtk-3.0
 	gtk-4.0
+	hypr
+	matugen
+	nvim
 	qt5ct
 	qt6ct
-	nvim
 	rofi
 	waybar
 	wlogout
