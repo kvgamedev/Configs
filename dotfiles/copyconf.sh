@@ -19,6 +19,7 @@ CONFIGS=(
 	rofi
 	waybar
 	wlogout
+	tmux
 )
 
 rm -rf "$config_loc"

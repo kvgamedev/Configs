@@ -25,6 +25,7 @@ return {
 			require("mini.ai").setup {}
 			require("mini.pairs").setup {}
 			require("mini.surround").setup {}
+			require("mini.jump2d").setup {}
 		end,
 	},
 
@@ -56,6 +57,7 @@ return {
 			},
 		},
 
+		--stylua: ignore
 		keys = {
 			{
 				"<leader>e",

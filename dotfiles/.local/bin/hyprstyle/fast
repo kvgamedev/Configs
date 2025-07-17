@@ -5,5 +5,5 @@ $rounding = 0
 $blur = false
 $shadow = false
 $opacity = 1
-$opacity-active = 1
+$opacity_active = 1
 $animations = no
