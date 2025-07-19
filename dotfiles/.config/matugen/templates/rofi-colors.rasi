@@ -7,7 +7,7 @@
     on-primary: {{colors.on_primary.default.hex}};
     on-primary-fixed: {{colors.on_primary_fixed.default.hex}};
     on-primary-fixed-variant: {{colors.on_primary_fixed_variant.default.hex}};
-    primary-container: {{colors.primary_container.default.rgba | set_alpha: 1.0}};
+    primary-container: {{colors.primary_container.default.rgba | set_alpha: 0.5}};
     on-primary-container: {{colors.on_primary_container.default.hex}};
     secondary: {{colors.secondary.default.hex}};
     secondary-fixed: {{colors.secondary_fixed.default.hex}};

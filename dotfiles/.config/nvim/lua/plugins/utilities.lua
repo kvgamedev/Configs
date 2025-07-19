@@ -37,7 +37,7 @@ return {
 		opts = {
 			bigfile = { enabled = true },
 			dashboard = { enabled = false },
-			explorer = { enabled = true },
+			explorer = { enabled = false },
 			indent = { enabled = true },
 			input = { enabled = true },
 			notifier = {
@@ -59,13 +59,13 @@ return {
 
 		--stylua: ignore
 		keys = {
-			{
-				"<leader>e",
-				function()
-					Snacks.explorer()
-				end,
-				desc = "File Explorer",
-			},
+			-- {
+			-- 	"<leader>e",
+			-- 	function()
+			-- 		Snacks.explorer()
+			-- 	end,
+			-- 	desc = "File Explorer",
+			-- },
 
 			-- find
 			{
@@ -488,6 +488,24 @@ return {
 					Snacks.toggle.dim():map "<leader>uD"
 				end,
 			})
+		end,
+	},
+
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		dependencies = "echasnovski/mini.nvim",
+		lazy = false,
+		config = function()
+			require("oil").setup()
+			vim.keymap.set(
+				"n",
+				"<leader>e",
+				"<Cmd>Oil<cr>",
+				{ desc = "Open Oil Explorer" }
+			)
 		end,
 	},
 }

@@ -1,12 +1,12 @@
 return {
 	{
-	    "mason-org/mason-lspconfig.nvim",
-	    event = "VeryLazy",
-	    opts = {},
-	    dependencies = {
-	        { "mason-org/mason.nvim", opts = {} },
-	        "neovim/nvim-lspconfig",
-	    },
+		"mason-org/mason-lspconfig.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 	},
 
 	{
@@ -23,11 +23,14 @@ return {
 	{
 		"stevearc/conform.nvim",
 		opts = {},
+		event = "VeryLazy",
 		config = function()
 			require("conform").setup {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					rust = { "rustfmt", lsp_format = "fallback" },
+					zig = { "zls", lsp_format = "fallback" },
+					cpp = { "clang-format", lsp_format = "fallback" },
 				},
 			}
 
@@ -55,7 +58,14 @@ return {
 			snippets = { preset = "luasnip" },
 			completion = { documentation = { auto_show = false } },
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100,
+					},
+				},
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
@@ -70,5 +80,15 @@ return {
 		config = function()
 			require("luasnip.loaders.from_vscode").load()
 		end,
+	},
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 }

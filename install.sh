@@ -26,7 +26,7 @@ PACMAN_PACKAGES=(
 	hyprpaper
 	keyd
 	fish
-	lf
+	yazi
 	nautilus
 	ghostty
 	mission-center

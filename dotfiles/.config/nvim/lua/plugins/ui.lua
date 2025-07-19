@@ -4,7 +4,24 @@ return {
 		priority = 1000,
 		name = "catppuccin",
 		config = function()
-			vim.cmd [[colorscheme catppuccin]]
+			require("catppuccin").setup {
+				-- transparent_background = true,
+			}
+			vim.cmd [[colorscheme gruvbox]]
+		end,
+	},
+
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
+		-- config = true,
+		opts = ...,
+		config = function()
+			require("gruvbox").setup {
+				contrast = "hard",
+				-- invert_selection = true,
+				-- transparent_mode = true,
+			}
 		end,
 	},
 

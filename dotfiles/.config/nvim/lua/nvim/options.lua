@@ -22,11 +22,10 @@ o.smartindent = true
 o.splitbelow = true
 o.splitright = true
 o.startofline = true
-o.termguicolors = true
 o.undofile = true
 o.wrapmargin = 5
 o.laststatus = 3
-o.guicursor =
-	"n:block-MiniStatusLineModeNormal,i:block-MiniStatusLineModeInsert,v:block-MiniStatusLineModeVisual,r:block-MiniStatusLineModeReplace"
 opt.listchars = { tab = "  ", trail = "" }
 o.cursorline = true
+o.termguicolors = true
+o.guicursor = "i:block-BlinkCmpDocCursorLine"
