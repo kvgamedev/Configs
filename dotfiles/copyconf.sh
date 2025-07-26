@@ -6,7 +6,6 @@ bin_loc="$HOME/Downloads/Configs/dotfiles/.local"
 CONFIGS=(
 	dunst
 	fastfetch
-	fish
 	fontconfig
 	ghostty
 	gtk-3.0

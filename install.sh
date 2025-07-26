@@ -25,8 +25,6 @@ PACMAN_PACKAGES=(
 	hyprlock
 	hyprpaper
 	keyd
-	fish
-	yazi
 	nautilus
 	ghostty
 	mission-center
@@ -63,6 +61,3 @@ yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 echo "Importing configs..."
 cp -r $DIR/dotfiles/.config/* $HOME/.config/
 cp -r $DIR/dotfiles/.local/* $HOME/.local/
-
-echo "Setting up Fish..."
-chsh -s /usr/bin/fish
