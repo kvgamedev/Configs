@@ -2,7 +2,7 @@
 
 * {
 	urgent: red;
-    roundness: 20px;
+    roundness: 0px;
     font: "JetbrainsMono Nerd Font 10";
 }
 
@@ -26,7 +26,7 @@ window {
     // padding: 0.2em;
     /* properties for all widgets */
     enabled: true;
-    border: 2px;
+    border: 1px;
     border-radius: @roundness;
     border-color: @primary;
     cursor: "default";

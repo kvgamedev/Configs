@@ -28,4 +28,6 @@ o.laststatus = 3
 opt.listchars = { tab = "  ", trail = "" }
 o.cursorline = true
 o.termguicolors = true
-o.guicursor = "i:block-BlinkCmpDocCursorLine"
+-- o.guicursor = "i:block-MiniStatusLineModeOther"
+o.guicursor =
+	"n:block-MiniStatusLineModeNormal,i:block-MiniStatusLineModeInsert,v:block-MiniStatusLineModeVisual,r:block-MiniStatusLineModeReplace,t:block-MiniStatusLineModeOther"

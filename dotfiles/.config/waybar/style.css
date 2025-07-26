@@ -16,7 +16,7 @@ window#waybar {
 .modules-right,
 .modules-left,
 .modules-center {
-	margin: 6 8 0 8;
+	margin: 0 0 0 0;
 }
 
 .modules-right,
@@ -27,7 +27,7 @@ window#waybar {
 #cpu,
 #memory,
 #idle_inhibitor {
-	border-radius: 30;
+	border-radius: 0;
 	background: alpha(@primary_container, 1.0);
 }
 
@@ -38,7 +38,7 @@ window#waybar {
 #cpu,
 #memory,
 #idle_inhibitor {
-	border: 2px solid @primary;
+	border: 1px solid @primary;
 }
 
 #window,
@@ -48,7 +48,7 @@ window#waybar {
 #memory,
 #idle_inhibitor{
 	padding: 0 8;
-	margin: 0 2;
+	margin: 0 0;
 }
 
 #window,
