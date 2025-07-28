@@ -1,7 +1,8 @@
 #!/bin/bash
 
-config_loc="$HOME/Downloads/Configs/dotfiles/.config"
-bin_loc="$HOME/Downloads/Configs/dotfiles/.local"
+DIR="$HOME/Configs/"
+config_loc="$DIR/dotfiles/.config"
+bin_loc="$DIR/dotfiles/.local"
 
 CONFIGS=(
 	dunst

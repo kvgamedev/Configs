@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=$(pwd)
+DIR="$HOME/Configs"
 PACMAN_PACKAGES=(
 	git
 	base-devel
@@ -32,12 +32,19 @@ PACMAN_PACKAGES=(
 	git-lfs
 	fd
 	unzip
+	zsh
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	zsh-completions
+	zsh-history-substring-search
+	tmux
 )
 
 AUR_PACKAGES=(
 	matugen-bin
 	wlogout
 	brave-bin
+	zsh-theme-powerlevel10k-git
 )
 
 DELETE_PACKAGES=(
@@ -53,11 +60,12 @@ echo "Installing Yay"
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-cd ~
-rm -rf ~/yay-bin
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
 echo "Importing configs..."
 cp -r $DIR/dotfiles/.config/* $HOME/.config/
 cp -r $DIR/dotfiles/.local/* $HOME/.local/
+
+echo "Changing Shell to ZSH"
+chsh -s /usr/bin/zsh

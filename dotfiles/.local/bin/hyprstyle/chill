@@ -5,5 +5,5 @@ $rounding = 8
 $blur = true
 $shadow = true
 $opacity = 0.75
-$opacity_active = 0.9
+$opacity_active = 1
 $animations = yes
