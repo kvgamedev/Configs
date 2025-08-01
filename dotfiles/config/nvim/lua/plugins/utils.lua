@@ -40,6 +40,7 @@ map("n", "<leader>*", function() fzf.grep_cword() end, { desc = "Word" })
 map("n", "<leader>ss", function() fzf.search_history() end, { desc = "Search History" })
 map("n", "<leader>sk", function() fzf.keymaps() end, { desc = "Keymaps" })
 map("n", "<leader>m", function() fzf.marks() end, { desc = "Marks" })
+map("n", "<leader>z", function() fzf.zoxide() end, { desc = "Zoxide" })
 
 -- Lsp
 map("n", "<leader>ld", function() fzf.lsp_document_diagnostics() end, { desc = "Diagnostics" })

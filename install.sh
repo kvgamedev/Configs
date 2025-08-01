@@ -38,6 +38,7 @@ PACMAN_PACKAGES=(
 	zsh-completions
 	zsh-history-substring-search
 	tmux
+	zoxide
 )
 
 AUR_PACKAGES=(
@@ -62,10 +63,6 @@ cd $HOME/yay
 makepkg -si
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
-
-# echo "Importing configs..."
-# cp -r $DIR/dotfiles/.config/* $HOME/.config/
-# cp -r $DIR/dotfiles/.local/* $HOME/.local/
 
 echo "Changing Shell to ZSH"
 chsh -s /usr/bin/zsh

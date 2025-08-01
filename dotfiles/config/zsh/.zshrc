@@ -34,10 +34,12 @@ alias zig='~/Documents/zig-x86_64-linux-0.15.0-dev.1222+5fb36d260/zig'
 alias tls='tmux ls'
 alias mkdir='mkdir -p'
 alias ts='~/.local/bin/Configs/dotfiles/local/bin/Commands/tmux-sessionizer.sh'
+alias zf='z $(fzf --walker=dir,hidden)'
 
 autoload -Uz compinit
 compinit
 
+eval "$(zoxide init zsh)"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
