@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MODE_CACHE_FILE="$HOME/.local/bin/walset/.mode"
+MODE_CACHE_FILE="$HOME/.local/bin/Configs/dotfiles/local/bin/walset/.mode"
 CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
 
 if [ ! -f $MODE_CACHE_FILE ]; then

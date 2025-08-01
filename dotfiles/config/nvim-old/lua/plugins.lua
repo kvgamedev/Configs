@@ -15,12 +15,14 @@ M = {
 			{ "<leader>s?", function() Snacks.picker.pickers() end, desc = "Pickers" },
 			{ "<leader>sc", function() Snacks.picker.commands() end, desc = "Commands" },
 			{ "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Word" },
+			{ "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 			{ "<leader>s/", function() Snacks.picker.search_history() end, desc = "Search History" },
 			{ "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
 			{ "<leader>wt", function() Snacks.terminal() end, desc = "Terminal" },
 			--stylua: ignore stop
 		},
 	},
+
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -36,10 +38,10 @@ M = {
 			})
 		end,
 	},
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "VeryLazy",
-		opts = {},
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				auto_install = true,
@@ -47,7 +49,9 @@ M = {
 			})
 		end,
 	},
+
 	{ "neovim/nvim-lspconfig", lazy = false },
+
 	{
 		"echasnovski/mini.nvim",
 		event = "VeryLazy",
@@ -72,6 +76,7 @@ M = {
 			})
 		end,
 	},
+
 	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
@@ -79,15 +84,23 @@ M = {
 			require("gruvbox").setup({ bold = false })
 		end,
 	},
+
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+	},
+
 	{
 		"stevearc/conform.nvim",
+		event = "VeryLazy",
 		opts = {},
 		config = function()
 			local conform = require("conform")
 			conform.setup({
 				formatters_by_ft = {
 					lua = { "stylua", fallback = "lsp" },
-					zig = { "zls", "zigfmt" },
+					zig = { "zigfmt" },
 					cpp = { "clang-format" },
 				},
 			})
@@ -96,6 +109,7 @@ M = {
 			end, { desc = "Conform" })
 		end,
 	},
+
 	{
 		"saghen/blink.cmp",
 		version = "1.*",
@@ -103,7 +117,7 @@ M = {
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
-			keymap = { preset = "super-tab" },
+			keymap = { preset = "default" },
 			appearance = {
 				nerd_font_variant = "mono",
 			},

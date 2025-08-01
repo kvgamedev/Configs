@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="$HOME/Configs"
+DIR="$HOME/.local/bin/Configs"
 PACMAN_PACKAGES=(
 	git
 	base-devel
@@ -57,15 +57,15 @@ sudo pacman -Syu --noconfirm --needed "${PACMAN_PACKAGES[@]}"
 sudo pacman -R --noconfirm "${DELETE_PACKAGES[@]}"
 
 echo "Installing Yay"
-git clone https://aur.archlinux.org/yay.git
-cd yay
+git clone https://aur.archlinux.org/yay.git $HOME/yay
+cd $HOME/yay
 makepkg -si
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
-echo "Importing configs..."
-cp -r $DIR/dotfiles/.config/* $HOME/.config/
-cp -r $DIR/dotfiles/.local/* $HOME/.local/
+# echo "Importing configs..."
+# cp -r $DIR/dotfiles/.config/* $HOME/.config/
+# cp -r $DIR/dotfiles/.local/* $HOME/.local/
 
 echo "Changing Shell to ZSH"
 chsh -s /usr/bin/zsh

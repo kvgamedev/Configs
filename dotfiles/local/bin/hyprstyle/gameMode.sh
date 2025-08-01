@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$HOME/.local/bin/hyprstyle/"
+cd "$HOME/.local/bin/Configs/dotfiles/local/bin/hyprstyle/"
 
 HYPRVAR="$HOME/.config/hypr/variables.conf"
 HYPRLOCK="$HOME/.config/hypr/hyprlock.conf"
@@ -46,4 +46,4 @@ elif [[ "$CACHE" == "chill" ]]; then
 
 fi
 
-~/.local/bin/walset/themeGenerator.sh
+~/.local/bin/Configs/dotfiles/local/bin/walset/themeGenerator.sh

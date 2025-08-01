@@ -5,6 +5,7 @@ vim.g.localmapleader = ' '
 local o = vim.o
 local opt = vim.opt
 
+o.swapfile = false
 o.number = true
 o.relativenumber = true
 o.clipboard = "unnamedplus"

@@ -28,7 +28,9 @@ window#waybar {
 #memory,
 #idle_inhibitor {
 	border-radius: 30;
-	background: alpha(@primary_container, 1.0);
+	/* background: alpha(@primary_container, 1.0); */
+	/* background: alpha(@surface, 1.0); */
+	background: alpha(@surface_container_lowest, 1.0);
 }
 
 .modules-right,
@@ -38,7 +40,9 @@ window#waybar {
 #cpu,
 #memory,
 #idle_inhibitor {
-	border: 2px solid @primary;
+	/* border: 2px solid @primary; */
+	/* border: 2px solid @surface; */
+	border: 2px solid @surface_container_lowest;
 }
 
 #window,
@@ -53,7 +57,7 @@ window#waybar {
 
 #window,
 #clock {
-	font-size: 16;
+	font-size: 18;
 	padding: 0 15;
 }
 
@@ -73,7 +77,7 @@ window#waybar {
 
 #workspaces button.active,
 #workspaces button.visible {
-	color: @inverse_primary;
+	color: @surface_container_lowest;
 	background: @primary;
 	padding: 0 10;
 }
