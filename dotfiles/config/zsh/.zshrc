@@ -13,7 +13,7 @@ export MANPAGER="nvim +Man!"
 bindkey -v
 
 # path+='/home/kv/.local/bin'
-path+='/home/kv/Documents/zig-x86_64-linux-0.15.0-dev.1222+5fb36d260'
+# path+='/home/kv/Documents/zig-x86_64-linux-0.15.0-dev.1222+5fb36d260'
 
 zstyle :compinstall filename '/home/kv/.zshrc'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -25,6 +25,8 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
+alias cd='z'
+alias v='nvim'
 alias ls='ls --color=auto'
 alias la='ls -la'
 alias vi='nvim'
@@ -34,7 +36,6 @@ alias zig='~/Documents/zig-x86_64-linux-0.15.0-dev.1222+5fb36d260/zig'
 alias tls='tmux ls'
 alias mkdir='mkdir -p'
 alias ts='~/.local/bin/Configs/dotfiles/local/bin/Commands/tmux-sessionizer.sh'
-alias zf='z $(fzf --walker=dir,hidden)'
 
 autoload -Uz compinit
 compinit
