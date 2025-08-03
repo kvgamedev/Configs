@@ -42,6 +42,7 @@ end
 vim.api.nvim_create_user_command("FloatTerm", function()
 	if not vim.api.nvim_win_is_valid(state.float_term.win) then
 		state.float_term = createFloatingWindow({ buf = state.float_term.buf, title = "Float Term" })
+		vim.bo[state.float_term.buf].filetype = "float_term"
 		vim.api.nvim_set_option_value("buflisted", false, { buf = state.float_term.buf })
 		if vim.bo[state.float_term.buf].buftype ~= "terminal" then
 			vim.cmd("terminal")

@@ -24,6 +24,7 @@ vim.lsp.config("lua_ls", {
 vim.lsp.client.capabilities = require("blink.cmp").get_lsp_capabilities()
 vim.lsp.enable(servers)
 
+--- @diagnostic disable: missing-fields
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
 	highlight = { enable = true },
@@ -36,7 +37,7 @@ require("blink.cmp").setup({
 	},
 	completion = {
 		documentation = { auto_show = true },
-		ghost_text = { enabled = true },
+		ghost_text = { enabled = false },
 		menu = { border = "rounded" },
 	},
 	sources = { default = { "lsp", "path", "snippets", "buffer" } },
