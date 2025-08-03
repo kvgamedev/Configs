@@ -68,6 +68,5 @@ vim.api.nvim_create_user_command("LazyGit", function()
 end, {})
 
 -- Keymaps
-vim.keymap.set("n", "<leader>o", "<Cmd>source lua/scripts/floaterm.lua<Cr>", { desc = "Source FloatTerm" })
 vim.keymap.set({ "n", "t" }, "<leader>wt", "<cmd>FloatTerm<cr>", { desc = "FloatTerm" })
-vim.keymap.set({ "n", "t" }, "<leader>wg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+vim.keymap.set({ "n" }, "<leader>wg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })

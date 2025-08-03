@@ -25,9 +25,9 @@ o.startofline = true
 o.undofile = true
 o.wrapmargin = 5
 o.laststatus = 3
+o.cmdheight = 0
 o.listchars = "tab:  ,trail:"
 o.cursorline = true
 o.termguicolors = true
--- o.winborder = "bold"
 o.guicursor =
 	"n:block-MiniStatusLineModeNormal,i:block-MiniStatusLineModeInsert,v:block-MiniStatusLineModeVisual,r:block-MiniStatusLineModeReplace,t:block-MiniStatusLineModeOther"
