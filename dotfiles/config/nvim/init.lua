@@ -113,7 +113,7 @@ map("n", "<leader>*",  function() picker.grep_word()       end, { desc = "Grep W
 map("n", "<leader>sw", function() picker.grep_word()       end, { desc = "Grep Word" })
 map("n", "<leader>sg", function() picker.grep_buffers()    end, { desc = "Grep Buffers" })
 map("n", "<leader>sr", function() picker.resume()          end, { desc = "Resume" })
-map("n", "<leader>*l", function() picker.lines()           end, { desc = "Lines" })
+map("n", "<leader>sl", function() picker.lines()           end, { desc = "Lines" })
 map("n", "<leader>b",  function() picker.buffers()         end, { desc = "Buffers" })
 map("n", "<leader>ss", function() picker.search_history()  end, { desc = "Search History" })
 map("n", "<leader>sc", function() picker.commands()        end, { desc = "Commands" })
@@ -206,3 +206,7 @@ end, { desc = "Format Buffer" })
 local wk = require("which-key")
 wk.setup({ delay = 0, preset = "helix" })
 wk.add({ "<leader>w", proxy = "<c-w>", desc = "Windows" })
+
+-- Toggles
+map("n", "<leader>oh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "Inlay Hints"})
+map("n", "<leader>ot", "<cmd>TSToggle<cr>", { desc = "Treesitter"})
