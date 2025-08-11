@@ -13,6 +13,7 @@ PACMAN=(
 	ttf-jetbrains-mono-nerd
 
 	# Utils
+	man-db
 	fzf
 	yazi
 	fish
