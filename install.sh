@@ -21,6 +21,7 @@ PACMAN=(
 	rofi-wayland
 
 	# Modern Replacements
+	starship
 	lazygit
 	zoxide
 	eza

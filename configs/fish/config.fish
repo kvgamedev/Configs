@@ -7,5 +7,6 @@ if status is-interactive
 	alias vi 'nvim (fzf)'
 	alias ch 'cd (fzf --walker=dir,hidden --walker-dir=$HOME)'
 
+	starship init fish | source
 	zoxide init fish | source
 end
