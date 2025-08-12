@@ -4,7 +4,7 @@ vim.g.localmapleader = " "
 local o = vim.o
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
-local lsp_servers = { "lua_ls", "zls" }
+local lsp_servers = { "lua_ls", "zls", "clangd" }
 
 -- Options
 o.swapfile = false
@@ -64,6 +64,7 @@ autocmd("VimResized", {
 })
 
 autocmd("LspAttach", {
+	once = true,
 	callback = function()
 		--stylua: ignore start
 		map("n", "gld", function() vim.lsp.buf.definition() end, { desc = "Goto Definition" })
@@ -73,7 +74,6 @@ autocmd("LspAttach", {
 		map("n", "gla", function() vim.lsp.buf.code_action() end, { desc = "Code Actions" })
 		--stylua: ignore stop
 	end,
-	once = true,
 })
 
 -- Plugins
@@ -138,7 +138,7 @@ map("n", "<leader>e", function() Snacks.explorer({ layout = { layout = { positio
 -- Lazy loading
 local lazy_group = vim.api.nvim_create_augroup("UserLazyLoad", { clear = true })
 
-autocmd("BufReadPre", {
+autocmd({ "BufReadPre", "BufNewFile" }, {
 	group = lazy_group,
 	once = true,
 	callback = function()
@@ -204,7 +204,7 @@ autocmd("BufReadPre", {
 	end,
 })
 
-autocmd("BufReadPost", {
+autocmd({ "BufReadPost", "BufNewFile" }, {
 	group = lazy_group,
 	once = true,
 	callback = function()
