@@ -65,12 +65,13 @@ autocmd("VimResized", {
 
 autocmd("LspAttach", {
 	callback = function()
-				--stylua: ignore start
-				vim.keymap.set("n", "gld", function() vim.lsp.buf.definition() end, { desc = "Goto Definition" })
-				vim.keymap.set("n", "gli", function() vim.lsp.buf.implementation() end, { desc = "Goto Implementation" })
-				vim.keymap.set("n", "glt", function() vim.lsp.buf.type_definition() end, { desc = "Goto Type Definition" })
-				vim.keymap.set("n", "gln", function() vim.lsp.buf.rename() end, { desc = "Rename" })
-				vim.keymap.set("n", "gla", function() vim.lsp.buf.code_action() end, { desc = "Code Actions" })
+		--stylua: ignore start
+		map("n", "gld", function() vim.lsp.buf.definition() end, { desc = "Goto Definition" })
+		map("n", "gli", function() vim.lsp.buf.implementation() end, { desc = "Goto Implementation" })
+		map("n", "glt", function() vim.lsp.buf.type_definition() end, { desc = "Goto Type Definition" })
+		map("n", "gln", function() vim.lsp.buf.rename() end, { desc = "Rename" })
+		map("n", "gla", function() vim.lsp.buf.code_action() end, { desc = "Code Actions" })
+		--stylua: ignore stop
 	end,
 	once = true,
 })
@@ -78,20 +79,14 @@ autocmd("LspAttach", {
 -- Plugins
 vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
-	"https://github.com/echasnovski/mini.nvim",
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	"https://github.com/ellisonleao/gruvbox.nvim",
-	"https://github.com/folke/which-key.nvim",
-	"https://github.com/neovim/nvim-lspconfig",
-	"https://github.com/nvim-treesitter/nvim-treesitter",
-	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
-	"https://github.com/stevearc/conform.nvim",
-	"https://github.com/lewis6991/gitsigns.nvim",
 })
 
 -- Colorscheme
 vim.cmd("colorscheme gruvbox")
 
+-- Snacks
 Snacks.setup({
 	input = { enabled = true },
 	statuscolumn = { enabled = true },
@@ -100,7 +95,7 @@ Snacks.setup({
 	image = { enabled = true },
 	quickfile = { enabled = true },
 	terminal = { win = { position = "float", border = "rounded" } },
-	picker = { ui_select = true, },
+	picker = { ui_select = true },
 })
 
 -- Pickers: Search
@@ -138,76 +133,106 @@ map("n", "<leader>lw", function() picker.lsp_workspace_symbols() end, { desc = "
 map("n", "<c-w>g", function() Snacks.lazygit()  end, { desc = "LazyGit" })
 map({ "n", "t" }, "<c-w>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
 map("n", "<leader>e", function() Snacks.explorer({ layout = { layout = { position = "right" }}}) end, { desc = "Explorer" })
+-- stylua: ignore stop
 
--- Mini
-require("mini.icons").setup({})
-MiniIcons.mock_nvim_web_devicons()
--- require("mini.statusline").setup({})
-require("mini.ai").setup({})
-require("mini.surround").setup({})
-require("mini.comment").setup({})
-require("mini.pairs").setup({})
--- require("mini.notify").setup({})
--- require("mini.files").setup({})
--- map("n", "<leader>e", function()
--- 	MiniFiles.open()
--- end, { desc = "Explorer" })
-local hipatterns = require("mini.hipatterns")
-hipatterns.setup({
-	highlighters = {
-		hex_color = hipatterns.gen_highlighter.hex_color(),
-		fixme = { pattern = "FIXME", group = "MiniHipatternsFixme" },
-		todo = { pattern = "TODO", group = "MiniHiPatternsTodo" },
-		note = { pattern = "NOTE", group = "MiniHiPatternsNote" },
-	},
+-- Lazy loading
+local lazy_group = vim.api.nvim_create_augroup("UserLazyLoad", { clear = true })
+
+autocmd("BufReadPre", {
+	group = lazy_group,
+	once = true,
+	callback = function()
+		vim.pack.add({
+			"https://github.com/echasnovski/mini.nvim",
+			"https://github.com/neovim/nvim-lspconfig",
+			"https://github.com/nvim-treesitter/nvim-treesitter",
+			{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
+		})
+
+		-- Mini
+		require("mini.icons").setup({})
+		MiniIcons.mock_nvim_web_devicons()
+		-- require("mini.statusline").setup({})
+		require("mini.ai").setup({})
+		require("mini.surround").setup({})
+		require("mini.comment").setup({})
+		require("mini.pairs").setup({})
+		-- require("mini.notify").setup({})
+		-- require("mini.files").setup({})
+		-- map("n", "<leader>e", function()
+			-- 	MiniFiles.open()
+			-- end, { desc = "Explorer" })
+		local hipatterns = require("mini.hipatterns")
+		hipatterns.setup({
+			highlighters = {
+				hex_color = hipatterns.gen_highlighter.hex_color(),
+				fixme = { pattern = "FIXME", group = "MiniHipatternsFixme" },
+				todo = { pattern = "TODO", group = "MiniHiPatternsTodo" },
+				note = { pattern = "NOTE", group = "MiniHiPatternsNote" },
+			},
+		})
+
+		-- LSP
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					runtime = { version = "LuaJIT" },
+					workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+					telemetry = { enable = false },
+				},
+			},
+		})
+
+		vim.lsp.client.capabilities = require("blink.cmp").get_lsp_capabilities()
+		vim.lsp.enable(lsp_servers)
+
+		-- Treesitter: Highlighting
+		--- @diagnostic disable: missing-fields
+		require("nvim-treesitter.configs").setup({
+			auto_install = true,
+			highlight = { enable = true },
+		})
+
+		-- Blink: AutoCompletion
+		require("blink.cmp").setup({
+			completion = { documentation = { auto_show = true } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		})
+	end,
 })
 
--- LSP
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			runtime = { version = "LuaJIT" },
-			workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-			telemetry = { enable = false },
-		},
-	},
+autocmd("BufReadPost", {
+	group = lazy_group,
+	once = true,
+	callback = function()
+		vim.pack.add({
+			"https://github.com/folke/which-key.nvim",
+			"https://github.com/stevearc/conform.nvim",
+			"https://github.com/lewis6991/gitsigns.nvim",
+		})
+
+		-- Conform: Formatting
+		require("conform").setup({
+			formatters_by_ft = {
+				lua = { "stylua" },
+				zig = { "zigfmt" },
+				cpp = { "clang-format" },
+			},
+		})
+		map("n", "glf", function()
+			require("conform").format()
+		end, { desc = "Format Buffer" })
+
+		-- Which-Key
+		local wk = require("which-key")
+		wk.setup({ delay = 0, preset = "helix" })
+		wk.add({ "<leader>w", proxy = "<c-w>", desc = "Windows" })
+
+		-- Toggles
+		map("n", "<leader>oh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "Inlay Hints"})
+		map("n", "<leader>ot", "<cmd>TSToggle highlight<cr>", { desc = "Treesitter"})
+	end,
 })
-
-vim.lsp.client.capabilities = require("blink.cmp").get_lsp_capabilities()
-vim.lsp.enable(lsp_servers)
-
--- Treesitter: Highlighting
---- @diagnostic disable: missing-fields
-require("nvim-treesitter.configs").setup({
-	auto_install = true,
-	highlight = { enable = true },
-})
-
--- Blink: AutoCompletion
-require("blink.cmp").setup({
-	completion = { documentation = { auto_show = true } },
-	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
-	},
-	fuzzy = { implementation = "prefer_rust_with_warning" },
-})
-
--- Conform: Formatting
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		zig = { "zigfmt" },
-		cpp = { "clang-format" },
-	},
-})
-map("n", "glf", function()
-	require("conform").format()
-end, { desc = "Format Buffer" })
-
-local wk = require("which-key")
-wk.setup({ delay = 0, preset = "helix" })
-wk.add({ "<leader>w", proxy = "<c-w>", desc = "Windows" })
-
--- Toggles
-map("n", "<leader>oh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "Inlay Hints"})
-map("n", "<leader>ot", "<cmd>TSToggle highlight<cr>", { desc = "Treesitter"})
