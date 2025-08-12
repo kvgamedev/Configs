@@ -79,7 +79,6 @@ autocmd("LspAttach", {
 -- Plugins
 vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
-	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	"https://github.com/ellisonleao/gruvbox.nvim",
 })
 
@@ -152,16 +151,10 @@ autocmd({ "BufReadPre", "BufNewFile" }, {
 		-- Mini
 		require("mini.icons").setup({})
 		MiniIcons.mock_nvim_web_devicons()
-		-- require("mini.statusline").setup({})
 		require("mini.ai").setup({})
 		require("mini.surround").setup({})
 		require("mini.comment").setup({})
 		require("mini.pairs").setup({})
-		-- require("mini.notify").setup({})
-		-- require("mini.files").setup({})
-		-- map("n", "<leader>e", function()
-			-- 	MiniFiles.open()
-			-- end, { desc = "Explorer" })
 		local hipatterns = require("mini.hipatterns")
 		hipatterns.setup({
 			highlighters = {
