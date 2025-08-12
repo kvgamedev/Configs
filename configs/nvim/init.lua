@@ -145,7 +145,6 @@ autocmd({ "BufReadPre", "BufNewFile" }, {
 			"https://github.com/echasnovski/mini.nvim",
 			"https://github.com/neovim/nvim-lspconfig",
 			"https://github.com/nvim-treesitter/nvim-treesitter",
-			{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
 		})
 
 		-- Mini
@@ -175,8 +174,6 @@ autocmd({ "BufReadPre", "BufNewFile" }, {
 				},
 			},
 		})
-
-		vim.lsp.client.capabilities = require("blink.cmp").get_lsp_capabilities()
 		vim.lsp.enable(lsp_servers)
 
 		-- Treesitter: Highlighting
@@ -184,15 +181,6 @@ autocmd({ "BufReadPre", "BufNewFile" }, {
 		require("nvim-treesitter.configs").setup({
 			auto_install = true,
 			highlight = { enable = true },
-		})
-
-		-- Blink: AutoCompletion
-		require("blink.cmp").setup({
-			completion = { documentation = { auto_show = true } },
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
-			fuzzy = { implementation = "prefer_rust_with_warning" },
 		})
 	end,
 })
@@ -227,5 +215,25 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
 		-- Toggles
 		map("n", "<leader>oh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "Inlay Hints"})
 		map("n", "<leader>ot", "<cmd>TSToggle highlight<cr>", { desc = "Treesitter"})
+	end,
+})
+
+autocmd("InsertEnter", {
+	group = lazy_group,
+	once = true,
+	callback = function()
+		vim.pack.add({
+			{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
+		})
+
+		vim.lsp.client.capabilities = require("blink.cmp").get_lsp_capabilities()
+		-- Blink: AutoCompletion
+		require("blink.cmp").setup({
+			completion = { documentation = { auto_show = true } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		})
 	end,
 })
