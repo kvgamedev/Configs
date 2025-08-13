@@ -86,7 +86,8 @@ vim.pack.add({
 vim.cmd("colorscheme gruvbox")
 
 -- Snacks
-Snacks.setup({
+local snacks = require("snacks")
+snacks.setup({
 	input = { enabled = true },
 	statuscolumn = { enabled = true },
 	animate = { enabled = true },
@@ -98,7 +99,7 @@ Snacks.setup({
 })
 
 -- Pickers: Search
-local picker = Snacks.picker
+local picker = snacks.picker
 
 --stylua: ignore start
 map("n", "<leader>f",  function() picker.files()           end, { desc = "Files" })
@@ -129,9 +130,9 @@ map("n", "<leader>ls", function() picker.lsp_symbols()           end, { desc = "
 map("n", "<leader>lw", function() picker.lsp_workspace_symbols() end, { desc = "Workspace Symbols" })
 
 -- Windows
-map("n", "<c-w>g", function() Snacks.lazygit()  end, { desc = "LazyGit" })
-map({ "n", "t" }, "<c-w>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
-map("n", "<leader>e", function() Snacks.explorer({ layout = { layout = { position = "right" }}}) end, { desc = "Explorer" })
+map("n", "<c-w>g", function() snacks.lazygit()  end, { desc = "LazyGit" })
+map({ "n", "t" }, "<c-w>t", function() snacks.terminal.toggle() end, { desc = "Terminal" })
+map("n", "<leader>e", function() snacks.explorer({ layout = { layout = { position = "right" }}}) end, { desc = "Explorer" })
 -- stylua: ignore stop
 
 -- Lazy loading
