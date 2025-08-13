@@ -1,6 +1,7 @@
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Exit Terminal Mode" })
 
-local state = {
+local M = {}
+M.state = {
 	terminal = {
 		win = -1,
 		buf = -1,
@@ -11,7 +12,7 @@ local state = {
 	},
 }
 
-local function createFloatingWindow(opts)
+M.createFloatingWin = function(opts)
 	opts = opts or {}
 	local width = opts.width or math.floor(vim.o.columns * 0.8)
 	local height = opts.height or math.floor(vim.o.lines * 0.8)
@@ -38,28 +39,38 @@ local function createFloatingWindow(opts)
 	return { buf = buf, win = win }
 end
 
-vim.api.nvim_create_user_command("LazyGit", function()
-	state.lazygit = createFloatingWindow({ buf = state.lazygit.buf, title = "LazyGit" })
+M.lazyGit = function()
+	M.state.lazygit = M.createFloatingWin({
+		buf = M.state.lazygit.buf,
+		title = "LazyGit",
+	})
 	vim.fn.jobstart("lazygit", {
 		term = true,
 		on_exit = function()
-			vim.api.nvim_win_close(state.lazygit.win, true)
-			vim.api.nvim_buf_delete(state.lazygit.buf, { force = true })
+			vim.api.nvim_win_close(M.state.lazygit.win, true)
+			vim.api.nvim_buf_delete(M.state.lazygit.buf, { force = true })
+			M.state.lazygit = { buf = -1, win = -1 }
 		end,
 	})
 	vim.cmd.startinsert()
-end, {})
-vim.keymap.set("n", "<leader>wg", function() vim.cmd.LazyGit() end, { desc = "Lazygit" })
+end
 
-vim.api.nvim_create_user_command("FloatingTerminal", function()
-	if not vim.api.nvim_win_is_valid(state.terminal.win) then
-		state.terminal = createFloatingWindow({ buf = state.terminal.buf })
-		if vim.bo[state.terminal.buf].buftype ~= "terminal" then
+M.floatTerm = function()
+	if not vim.api.nvim_win_is_valid(M.state.terminal.win) then
+		M.state.terminal = M.createFloatingWin({ buf = M.state.terminal.buf })
+		if vim.bo[M.state.terminal.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
 		end
 		vim.cmd.startinsert()
 	else
-		vim.api.nvim_win_hide(state.terminal.win)
+		vim.api.nvim_win_hide(M.state.terminal.win)
 	end
-end, {})
-vim.keymap.set("n", "<leader>wt", function() vim.cmd.FloatingTerminal() end, { desc = "Floating Terminal" })
+end
+
+vim.api.nvim_create_user_command("LazyGit", M.lazyGit, {})
+vim.api.nvim_create_user_command("FloatingTerminal", M.floatTerm, {})
+
+vim.keymap.set("n", "<leader>wg", vim.cmd.LazyGit, { desc = "LazyGit" })
+vim.keymap.set("n", "<leader>wt", vim.cmd.FloatingTerminal, { desc = "Floating Terminal" })
+
+return M

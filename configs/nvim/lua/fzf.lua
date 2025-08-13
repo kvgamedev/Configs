@@ -16,4 +16,5 @@ vim.keymap.set("n", "<leader>s/", function() fzf.lines()           end, { desc =
 vim.keymap.set("n", "<leader>q",  function() fzf.quickfix()        end, { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>*",  function() fzf.grep_cword()      end, { desc = "Grep Word" })
 vim.keymap.set("n", "<leader>p",  function() fzf.grep_project()    end, { desc = "Grep Project" })
+vim.keymap.set("n", "<leader>?",  function() fzf.builtin()    end, { desc = "Grep Project" })
 --stylua: ignore stop
