@@ -1,0 +1,8 @@
+vim.keymap.set({ "n" }, "<leader>w", "<c-w>", { desc = "Window" })
+vim.keymap.set({ "n", "v", "o" }, "<A-l>", "G", { desc = "Last Line" })
+vim.keymap.set({ "n", "v", "o" }, "<A-h>", "gg", { desc = "First Line" })
+vim.keymap.set({ "n", "v", "o" }, "<S-l>", "$", { desc = "Last Character" })
+vim.keymap.set({ "n", "v", "o" }, "<S-h>", "0", { desc = "First Character" })
+vim.keymap.set({ "n" }, "<Esc>", function()
+	vim.cmd("nohlsearch")
+end, { desc = "Remove Search Highlights" })
