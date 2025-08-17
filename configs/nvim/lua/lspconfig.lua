@@ -1,8 +1,7 @@
-local lsp_servers = { "lua_ls", "zls", "clangd" }
 vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 })
--- LSP
+
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -12,4 +11,11 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.lsp.enable(lsp_servers)
+
+vim.lsp.enable({
+	"lua_ls",
+	"zls",
+	"clangd",
+})
+
+vim.diagnostic.config({ virtual_text = true })

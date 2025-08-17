@@ -22,7 +22,7 @@ vim.o.splitright = true
 vim.o.startofline = true
 vim.o.undofile = true
 vim.o.wrapmargin = 5
-vim.o.laststatus = 0
+vim.o.laststatus = 3
 vim.o.cmdheight = 1
 vim.o.winborder = "rounded"
 vim.o.listchars = "tab:  ,trail:"
@@ -30,5 +30,3 @@ vim.o.cursorline = false
 vim.o.termguicolors = true
 -- o.guicursor =
 -- 	"n:block-MiniStatusLineModeNormal,i:block-MiniStatusLineModeInsert,v:block-MiniStatusLineModeVisual,r:block-MiniStatusLineModeReplace,t:block-MiniStatusLineModeOther"
--- Plugins
-

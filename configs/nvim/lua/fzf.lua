@@ -4,17 +4,36 @@ vim.pack.add({
 local fzf = require("fzf-lua")
 fzf.register_ui_select()
 
---stylua: ignore start
-vim.keymap.set("n", "<leader>f",  function() fzf.files()           end, { desc = "Files" })
-vim.keymap.set("n", "<leader>/",  function() fzf.live_grep()       end, { desc = "Grep" })
-vim.keymap.set("n", "<leader>sc", function() fzf.commands()        end, { desc = "Commands" })
-vim.keymap.set("n", "<leader>sh", function() fzf.command_history() end, { desc = "Command History" })
-vim.keymap.set("n", "<leader>sH", function() fzf.helptags()        end, { desc = "Help" })
-vim.keymap.set("n", "<leader>sk", function() fzf.keymaps()         end, { desc = "Keymaps" })
-vim.keymap.set("n", "<leader>b",  function() fzf.buffers()         end, { desc = "buffers" })
-vim.keymap.set("n", "<leader>s/", function() fzf.lines()           end, { desc = "lines" })
-vim.keymap.set("n", "<leader>q",  function() fzf.quickfix()        end, { desc = "Quickfix" })
-vim.keymap.set("n", "<leader>*",  function() fzf.grep_cword()      end, { desc = "Grep Word" })
-vim.keymap.set("n", "<leader>p",  function() fzf.grep_project()    end, { desc = "Grep Project" })
-vim.keymap.set("n", "<leader>?",  function() fzf.builtin()    end, { desc = "Grep Project" })
---stylua: ignore stop
+vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Files" })
+vim.keymap.set("n", "<leader>/", fzf.live_grep, { desc = "Grep" })
+vim.keymap.set("n", "<leader>b", fzf.buffers, { desc = "buffers" })
+vim.keymap.set("n", "<leader>q", fzf.quickfix, { desc = "Quickfix" })
+vim.keymap.set("n", "<leader>*", fzf.grep_cword, { desc = "Grep Word" })
+vim.keymap.set("n", "<leader>p", fzf.grep_project, { desc = "Grep Project" })
+vim.keymap.set("n", "<leader>s", "<Nop>", { desc = "Search" })
+vim.keymap.set("n", "<leader>s/", fzf.lines, { desc = "Lines" })
+vim.keymap.set("n", "<leader>sc", fzf.commands, { desc = "Commands" })
+vim.keymap.set("n", "<leader>sh", fzf.command_history, { desc = "Command History" })
+vim.keymap.set("n", "<leader>sH", fzf.helptags, { desc = "Help" })
+vim.keymap.set("n", "<leader>sk", fzf.keymaps, { desc = "Keymaps" })
+vim.keymap.set("n", "<leader>s?", fzf.builtin, { desc = "Pickers" })
+
+-- LSP
+vim.keymap.set("n", "<leader>l", "<Nop>", { desc = "LSP Search" })
+vim.keymap.set("n", "<leader>ld", fzf.lsp_definitions, { desc = "Definitions" })
+vim.keymap.set("n", "<leader>lr", fzf.lsp_references, { desc = "References" })
+vim.keymap.set("n", "<leader>lt", fzf.lsp_typedefs, { desc = "TypeDefs" })
+vim.keymap.set("n", "<leader>la", fzf.lsp_code_actions, { desc = "Code Actions" })
+vim.keymap.set("n", "<leader>li", fzf.lsp_implementations, { desc = "Implementations" })
+vim.keymap.set("n", "<leader>ls", fzf.lsp_document_symbols, { desc = "Document Symbols" })
+vim.keymap.set("n", "<leader>le", fzf.lsp_document_diagnostics, { desc = "Document Diagnostics" })
+
+vim.keymap.set("n", "<leader>lw", "<Nop>", { desc = "Workspace" })
+vim.keymap.set("n", "<leader>lws", fzf.lsp_workspace_symbols, { desc = "Workspace Symbols" })
+vim.keymap.set("n", "<leader>lwd", fzf.lsp_workspace_diagnostics, { desc = "Workspace Diagnostics" })
+
+-- Git
+vim.keymap.set("n", "<leader>g", "<Nop>", { desc = "Git Search" })
+vim.keymap.set("n", "<leader>gb", fzf.git_branches, { desc = "Git Branches" })
+
+-- vim.keymap.set("n", "<leader>o", ":so fzf.lua<cr>", { desc = "Source FZF" })

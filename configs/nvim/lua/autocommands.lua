@@ -14,12 +14,11 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	once = true,
 	callback = function()
-		--stylua: ignore start
-		vim.keymap.set("n", "gld", function() vim.lsp.buf.definition() end, { desc = "Goto Definition" })
-		vim.keymap.set("n", "gli", function() vim.lsp.buf.implementation() end, { desc = "Goto Implementation" })
-		vim.keymap.set("n", "glt", function() vim.lsp.buf.type_definition() end, { desc = "Goto Type Definition" })
-		vim.keymap.set("n", "gln", function() vim.lsp.buf.rename() end, { desc = "Rename" })
-		vim.keymap.set("n", "gla", function() vim.lsp.buf.code_action() end, { desc = "Code Actions" })
-		--stylua: ignore stop
+		vim.keymap.set("n", "gl", "<Nop>", { desc = "LSP" })
+		vim.keymap.set("n", "gld", vim.lsp.buf.definition, { desc = "Goto Definition" })
+		vim.keymap.set("n", "gli", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+		vim.keymap.set("n", "glt", vim.lsp.buf.type_definition, { desc = "Goto Type Definition" })
+		vim.keymap.set("n", "gln", vim.lsp.buf.rename, { desc = "Rename" })
+		vim.keymap.set("n", "gla", vim.lsp.buf.code_action, { desc = "Code Actions" })
 	end,
 })

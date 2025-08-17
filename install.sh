@@ -20,6 +20,7 @@ PACMAN=(
 	keyd
 	swww
 	rofi-wayland
+	unzip
 
 	# Modern Replacements
 	starship

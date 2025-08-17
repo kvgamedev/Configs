@@ -70,7 +70,7 @@ end
 vim.api.nvim_create_user_command("LazyGit", M.lazyGit, {})
 vim.api.nvim_create_user_command("FloatingTerminal", M.floatTerm, {})
 
-vim.keymap.set("n", "<leader>wg", vim.cmd.LazyGit, { desc = "LazyGit" })
-vim.keymap.set("n", "<leader>wt", vim.cmd.FloatingTerminal, { desc = "Floating Terminal" })
+vim.keymap.set("n", "<c-w>g", vim.cmd.LazyGit, { desc = "LazyGit" })
+vim.keymap.set("n", "<c-w>t", vim.cmd.FloatingTerminal, { desc = "Floating Terminal" })
 
 return M
