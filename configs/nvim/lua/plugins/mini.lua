@@ -17,6 +17,8 @@ require("mini.notify").setup()
 require("mini.pairs").setup()
 require("mini.operators").setup()
 require("mini.bracketed").setup()
+require("mini.jump").setup()
+require("mini.jump2d").setup()
 
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
