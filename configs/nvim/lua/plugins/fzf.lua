@@ -10,6 +10,7 @@ vim.keymap.set("n", "<leader>b", fzf.buffers, { desc = "buffers" })
 vim.keymap.set("n", "<leader>q", fzf.quickfix, { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>*", fzf.grep_cword, { desc = "Grep Word" })
 vim.keymap.set("n", "<leader>p", fzf.grep_project, { desc = "Grep Project" })
+
 vim.keymap.set("n", "<leader>s", "<Nop>", { desc = "Search" })
 vim.keymap.set("n", "<leader>s/", fzf.lines, { desc = "Lines" })
 vim.keymap.set("n", "<leader>sc", fzf.commands, { desc = "Commands" })
@@ -35,5 +36,3 @@ vim.keymap.set("n", "<leader>lwd", fzf.lsp_workspace_diagnostics, { desc = "Work
 -- Git
 vim.keymap.set("n", "<leader>g", "<Nop>", { desc = "Git Search" })
 vim.keymap.set("n", "<leader>gb", fzf.git_branches, { desc = "Git Branches" })
-
--- vim.keymap.set("n", "<leader>o", ":so fzf.lua<cr>", { desc = "Source FZF" })
