@@ -39,6 +39,22 @@ M.createFloatingWin = function(opts)
 	return { buf = buf, win = win }
 end
 
+M.bottom = function()
+	M.state.lazygit = M.createFloatingWin({
+		buf = M.state.lazygit.buf,
+		title = "Bottom System Monitor",
+	})
+	vim.fn.jobstart("btm", {
+		term = true,
+		on_exit = function()
+			vim.api.nvim_win_close(M.state.lazygit.win, true)
+			vim.api.nvim_buf_delete(M.state.lazygit.buf, { force = true })
+			M.state.lazygit = { buf = -1, win = -1 }
+		end,
+	})
+	vim.cmd.startinsert()
+end
+
 M.lazyGit = function()
 	M.state.lazygit = M.createFloatingWin({
 		buf = M.state.lazygit.buf,
@@ -56,20 +72,19 @@ M.lazyGit = function()
 end
 
 M.floatTerm = function()
-	if not vim.api.nvim_win_is_valid(M.state.terminal.win) then
-		M.state.terminal = M.createFloatingWin({ buf = M.state.terminal.buf })
-		if vim.bo[M.state.terminal.buf].buftype ~= "terminal" then
-			vim.cmd.terminal()
-		end
-		vim.cmd.startinsert()
-	else
-		vim.api.nvim_win_hide(M.state.terminal.win)
+	M.state.terminal = M.createFloatingWin({ buf = M.state.terminal.buf })
+	if vim.bo[M.state.terminal.buf].buftype ~= "terminal" then
+		vim.cmd.terminal()
+		vim.keymap.set("n", "q", ":lua vim.api.nvim_win_hide(0)<cr>", { buffer = true })
 	end
+	vim.cmd.startinsert()
 end
 
+vim.api.nvim_create_user_command("Bottom", M.bottom, {})
 vim.api.nvim_create_user_command("LazyGit", M.lazyGit, {})
 vim.api.nvim_create_user_command("FloatingTerminal", M.floatTerm, {})
 
+vim.keymap.set("n", "<c-w>b", vim.cmd.Bottom, { desc = "System Monitor (btm)" })
 vim.keymap.set("n", "<c-w>g", vim.cmd.LazyGit, { desc = "LazyGit" })
 vim.keymap.set("n", "<c-w>t", vim.cmd.FloatingTerminal, { desc = "Floating Terminal" })
 
