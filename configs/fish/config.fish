@@ -1,5 +1,5 @@
 if status is-interactive
-	alias nvim '$HOME/Applications/nvim/bin/nvim'
+	alias nvim '$HOME/Applications/nvim-src/Executable/bin/nvim'
 	alias cat 'bat'
 	alias ls 'eza --icons auto'
 	alias cd 'z'
@@ -8,6 +8,7 @@ if status is-interactive
 	alias v 'nvim'
 	alias vi 'nvim (fzf)'
 	alias ch 'cd (fzf --walker=dir,hidden --walker-root=$HOME)'
+	alias mkdir 'mkdir -p'
 
 	starship init fish | source
 	zoxide init fish | source
