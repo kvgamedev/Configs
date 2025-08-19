@@ -1,13 +1,10 @@
 {
 	"height": 30,
-	"spacing": 10,
+	"spacing": 15,
 	"margin": "6 6 0 6",
 	"modules-center": [ "clock" ],
-	"modules-right": [ "network" ],
+	"modules-right": [ "network", "pulseaudio", "battery"  ],
 	"modules-left": [ "hyprland/workspaces" ],
-	"network": {
-		"format": ""
-	},
 	"hyprland/workspaces": {
 		"format": "{icon}",
 		"format-icons": {
@@ -17,5 +14,19 @@
 		"persistent-workspaces": {
 			"*": 2,
 		},
-	}
+	},
+	"network": {
+		"format": "󰤨",
+		"format-disconnected": "󰤭",
+	},
+	"pulseaudio": {
+		"format": "",
+		"format-muted": "",
+	},
+	"battery": {
+		"format": "{icon}",
+		"format-icons": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󱟢"],
+		"format-charging": "{icon} 󱐥",
+		"format-plugged": "{icon} 󱐥",
+	},
 }

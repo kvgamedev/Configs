@@ -6,10 +6,10 @@
 }
 
 window#waybar {
-	border-radius: 12;
 	background: @surface;
-	border: 0px solid @primary;
 	color: @on_surface;
+	border-radius: 12;
+	border: 0px solid @primary;
 }
 
 .modules-left {
@@ -18,12 +18,6 @@ window#waybar {
 
 .modules-right {
 	margin-right: 15;
-}
-
-#clock,
-#network
-{
-	color: @on_surface;
 }
 
 #clock {
