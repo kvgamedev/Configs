@@ -1,0 +1,24 @@
+[config]
+
+[config.wallpaper]
+command = "swww"
+arguments = [ "img" ]
+set = true
+
+[templates.hyprland]
+input_path = "./templates/hyprland.conf"
+output_path = "~/.config/hypr/matugen.conf"
+
+[templates.waybar]
+input_path = "./templates/colors.css"
+output_path = "~/.config/waybar/matugen.css"
+post_hook = "pkill -SIGUSR2 waybar"
+
+[templates.rofi]
+input_path = "./templates/rofi.rasi"
+output_path = "~/.config/rofi/matugen.rasi"
+
+[templates.ghostty]
+input_path = "./templates/ghostty"
+output_path = "~/.config/ghostty/themes/matugen"
+post_hook = 'hyprctl dispatch sendshortcut "ctrl shift, comma, class:com.mitchellh.ghostty"'
