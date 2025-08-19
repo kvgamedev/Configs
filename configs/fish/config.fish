@@ -1,4 +1,5 @@
 if status is-interactive
+	alias nvim '$HOME/Applications/nvim/bin/nvim'
 	alias cat 'bat'
 	alias ls 'eza --icons auto'
 	alias cd 'z'
