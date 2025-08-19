@@ -1,0 +1,38 @@
+@import "matugen.css";
+* {
+	font-family: "NotoSans Nerd Font Propo";
+	font-size: 16;
+	font-weight: bolder;
+}
+
+window#waybar {
+	border-radius: 12;
+	background: @surface;
+	border: 0px solid @primary;
+	color: @on_surface;
+}
+
+.modules-left {
+	margin-left: 15;
+}
+
+.modules-right {
+	margin-right: 15;
+}
+
+#clock,
+#network
+{
+	color: @on_surface;
+}
+
+#clock {
+	font-size: 24;
+}
+
+#workspaces button {
+	color: @on_surface;
+}
+#workspaces button.active {
+	color: @primary;
+}

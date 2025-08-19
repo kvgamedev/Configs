@@ -1,0 +1,21 @@
+{
+	"height": 30,
+	"spacing": 10,
+	"margin": "6 6 0 6",
+	"modules-center": [ "clock" ],
+	"modules-right": [ "network" ],
+	"modules-left": [ "hyprland/workspaces" ],
+	"network": {
+		"format": ""
+	},
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+		},
+		"persistent-workspaces": {
+			"*": 2,
+		},
+	}
+}
