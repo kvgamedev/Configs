@@ -75,7 +75,7 @@ M.floatTerm = function()
 	M.state.terminal = M.createFloatingWin({ buf = M.state.terminal.buf })
 	if vim.bo[M.state.terminal.buf].buftype ~= "terminal" then
 		vim.cmd.terminal()
-		vim.keymap.set("n", "q", ":lua vim.api.nvim_win_hide(0)<cr>", { buffer = true })
+		vim.keymap.set("n", "<c-q>", ":lua vim.api.nvim_win_hide(0)<cr>", { buffer = true })
 	end
 	vim.cmd.startinsert()
 end
