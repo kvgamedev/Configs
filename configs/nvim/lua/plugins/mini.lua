@@ -14,7 +14,6 @@ require("mini.comment").setup()
 require("mini.surround").setup()
 require("mini.splitjoin").setup()
 require("mini.notify").setup()
-require("mini.pairs").setup()
 require("mini.operators").setup()
 require("mini.bracketed").setup()
 
