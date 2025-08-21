@@ -16,7 +16,7 @@ post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.rofi]
 input_path = "./templates/rofi.rasi"
-output_path = "~/.config/rofi/matugen.rasi"
+output_path = "~/.config/rofi/config.rasi"
 
 [templates.ghostty]
 input_path = "./templates/ghostty"
