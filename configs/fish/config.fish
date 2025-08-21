@@ -1,4 +1,5 @@
 if status is-interactive
+	set -x MANPAGER '/home/kv/Applications/nvim-src/Executable/bin/nvim +Man!'
 	alias nvim '$HOME/Applications/nvim-src/Executable/bin/nvim'
 	alias cat 'bat'
 	alias ls 'eza --icons auto'
