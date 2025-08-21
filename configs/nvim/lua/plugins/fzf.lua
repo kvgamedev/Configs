@@ -6,7 +6,7 @@ fzf.register_ui_select()
 
 vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Files" })
 vim.keymap.set("n", "<leader>/", fzf.live_grep, { desc = "Grep" })
-vim.keymap.set("n", "<leader>b", fzf.buffers, { desc = "buffers" })
+vim.keymap.set("n", "<leader>b", fzf.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>q", fzf.quickfix, { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>*", fzf.grep_cword, { desc = "Grep Word" })
 vim.keymap.set("n", "<leader>p", fzf.grep_project, { desc = "Grep Project" })

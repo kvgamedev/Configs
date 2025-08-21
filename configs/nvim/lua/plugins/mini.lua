@@ -16,6 +16,7 @@ require("mini.splitjoin").setup()
 require("mini.notify").setup()
 require("mini.operators").setup()
 require("mini.bracketed").setup()
+require("mini.tabline").setup()
 
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
