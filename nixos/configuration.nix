@@ -102,6 +102,7 @@ environment.systemPackages = with pkgs; [
 	zls
 	clang-tools
 	lua-language-server
+	stylua
 
 	glfw
 	imgui
