@@ -8,6 +8,7 @@ vim.defer_fn(function()
 	require("keymaps")
 	require("autocommands")
 
+	require("plugins.noNeckPain")
 	require("plugins.fzf")
 	require("plugins.mini")
 	require("plugins.lspconfig")
