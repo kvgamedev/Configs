@@ -41,23 +41,29 @@ end
 
 M.startcmd = function(opts)
 	opts = opts or {}
-	M.state.job = M.createFloatingWin({ buf = M.state.job.buf, title = opts.title, })
-	vim.fn.jobstart(opts.command, {
-		term = true,
-		on_exit = function()
-			vim.api.nvim_win_close(M.state.job.win, true)
-			vim.api.nvim_buf_delete(M.state.job.buf, { force = true })
-			M.state.job = { buf = -1, win = -1 }
-		end,
-	})
-	vim.cmd.startinsert()
+	if vim.fn.executable(opts.command) == 1 then
+		M.state.job = M.createFloatingWin({ buf = M.state.job.buf, title = opts.title })
+		vim.fn.jobstart(opts.command, {
+			term = true,
+			on_exit = function()
+				vim.api.nvim_win_close(M.state.job.win, true)
+				vim.api.nvim_buf_delete(M.state.job.buf, { force = true })
+				M.state.job = { buf = -1, win = -1 }
+			end,
+		})
+		vim.cmd.startinsert()
+	else
+		print("!!! Please Install " .. opts.title .. " !!!")
+	end
 end
 
 M.floatTerm = function()
 	M.state.terminal = M.createFloatingWin({ buf = M.state.terminal.buf })
 	if vim.bo[M.state.terminal.buf].buftype ~= "terminal" then
 		vim.cmd.terminal()
-		vim.keymap.set("n", "<c-q>", function() vim.api.nvim_win_hide(0) end, { buffer = true })
+		vim.keymap.set("n", "<c-q>", function()
+			vim.api.nvim_win_hide(0)
+		end, { buffer = true })
 	end
 	vim.cmd.startinsert()
 end
@@ -65,7 +71,11 @@ end
 vim.api.nvim_create_user_command("FloatingTerminal", M.floatTerm, {})
 
 vim.keymap.set("n", "<c-w>t", vim.cmd.FloatingTerminal, { desc = "Floating Terminal" })
-vim.keymap.set("n", "<c-w>g", function() M.startcmd({ title = "LazyGit", command = "lazygit"}) end, { desc = "Lazygit" })
-vim.keymap.set("n", "<c-w>b", function() M.startcmd({ title = "Bottom", command = "btm"}) end, { desc = "Bottom" })
+vim.keymap.set("n", "<c-w>g", function()
+	M.startcmd({ title = "LazyGit", command = "lazygit" })
+end, { desc = "Lazygit" })
+vim.keymap.set("n", "<c-w>b", function()
+	M.startcmd({ title = "Bottom", command = "btm" })
+end, { desc = "Bottom" })
 
 return M
