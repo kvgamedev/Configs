@@ -10,6 +10,7 @@ vim.keymap.set("n", "<leader>b", fzf.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>q", fzf.quickfix, { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>*", fzf.grep_cword, { desc = "Grep Word" })
 vim.keymap.set("n", "<leader>p", fzf.grep_project, { desc = "Grep Project" })
+vim.keymap.set("n", "<leader>z", fzf.zoxide, { desc = "Zoxide" })
 
 vim.keymap.set("n", "<leader>s", "<Nop>", { desc = "Search" })
 vim.keymap.set("n", "<leader>s/", fzf.lines, { desc = "Lines" })
