@@ -1,7 +1,6 @@
-vim.pack.add({
-		"https://github.com/ellisonleao/gruvbox.nvim",
-		{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" }
-}, { confirm = false })
+local plugman = require("custom.plugin_manager")
+plugman.addplug("https://github.com/ellisonleao/gruvbox.nvim")
+plugman.addplug({src = "https://github.com/catppuccin/nvim", name = "catppuccin" })
 
 require("gruvbox").setup({
 	transparent_mode = true,
