@@ -18,6 +18,10 @@ post_hook = "pkill -SIGUSR2 waybar"
 input_path = "./templates/rofi.rasi"
 output_path = "~/.config/rofi/config.rasi"
 
+[templates.yazi]
+input_path = "./templates/yazi.toml"
+output_path = "~/.config/yazi/theme.toml"
+
 [templates.ghostty]
 input_path = "./templates/ghostty"
 output_path = "~/.config/ghostty/themes/matugen"
