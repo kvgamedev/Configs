@@ -1,7 +1,7 @@
 vim.pack.add({
 		"https://github.com/ellisonleao/gruvbox.nvim",
 		{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" }
-})
+}, { confirm = false })
 
 require("gruvbox").setup({
 	transparent_mode = true,
