@@ -32,6 +32,13 @@ i18n.extraLocaleSettings = {
 	LC_TIME = "en_IN";
 };
 
+services.pipewire = {
+	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+};
+
 services.xserver.xkb = {
 	layout = "us";
 	variant = "";
@@ -92,6 +99,9 @@ environment.systemPackages = with pkgs; [
 	bottom
 	mission-center
 	nvtopPackages.nvidia
+
+	dunst
+	libnotify
 
 	# Development
 	gnumake
