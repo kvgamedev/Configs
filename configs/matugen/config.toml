@@ -26,3 +26,12 @@ output_path = "~/.config/yazi/theme.toml"
 input_path = "./templates/ghostty"
 output_path = "~/.config/ghostty/themes/matugen"
 post_hook = 'hyprctl dispatch sendshortcut "ctrl shift, comma, class:com.mitchellh.ghostty"'
+
+# [templates.kitty]
+# input_path = "./templates/kitty.conf"
+# output_path = "~/.config/kitty/matugen.conf"
+# post_hook = "pkill -SIGUSR1 kitty"
+
+[templates.starship]
+input_path = "./templates/starship.toml"
+output_path = "~/.config/starship.toml"
