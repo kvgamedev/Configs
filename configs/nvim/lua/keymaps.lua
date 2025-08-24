@@ -1,4 +1,4 @@
--- vim.keymap.set({ "n" }, "<leader>w", "<c-w>", { desc = "Window" })
+-- vim.keymap.set({ "n" }, "<leader>w", "<c-w>", { desc = "Window" }) -- this or using proxy in which-key
 vim.keymap.set({ "n", "v", "o" }, "<A-l>", "G", { desc = "Last Line" })
 vim.keymap.set({ "n", "v", "o" }, "<A-h>", "gg", { desc = "First Line" })
 vim.keymap.set({ "n", "v", "o" }, "<S-l>", "$", { desc = "Last Character" })
