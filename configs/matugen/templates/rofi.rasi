@@ -1,12 +1,3 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
-
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser,window";
@@ -21,7 +12,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Noto Sans Nerd Font 10";
+    font:                        "NotoSansM Nerd Font 10";
     background:                  {{colors.surface.default.hex}};
     background-alt:              {{colors.surface_bright.default.hex}};
     foreground:                  {{colors.on_surface.default.hex}};
