@@ -1,12 +1,3 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
-
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser,window";
@@ -21,13 +12,13 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Noto Sans Nerd Font 10";
-    background:                  #141218;
-    background-alt:              #3b383e;
-    foreground:                  #e6e0e9;
-    selected:                    #4d3d75;
-    active:                      #4a4458;
-    urgent:                      #633b48;
+    font:                        "NotoSansM Nerd Font 10";
+    background:                  #0f1417;
+    background-alt:              #353a3d;
+    foreground:                  #dfe3e7;
+    selected:                    #004c69;
+    active:                      #374955;
+    urgent:                      #494264;
 }
 
 /*****----- Main Window -----*****/
@@ -60,7 +51,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("/home/kv/Wallpapers/huawei-purple-3840x2160-22843.jpg", height);
+    background-image:            url("/home/kv/Wallpapers/2RZyIHHZ-fond-decran-Chretien-114.png", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }
