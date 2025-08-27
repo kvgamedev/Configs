@@ -1,10 +1,10 @@
 local plugman = require("custom.plugin_manager")
 local configs = require("plugins.configs")
 
-plugman.addplug({
-	src = "https://github.com/shortcuts/no-neck-pain.nvim",
-	post_hook = configs.noNeckPain,
-})
+-- plugman.addplug({
+-- 	src = "https://github.com/shortcuts/no-neck-pain.nvim",
+-- 	post_hook = configs.noNeckPain,
+-- })
 
 plugman.addplug({
 	src = "https://github.com/echasnovski/mini.nvim",
@@ -18,7 +18,7 @@ plugman.addplug({
 
 plugman.addplug({
 	src = "https://github.com/folke/flash.nvim",
-	post_hook = M.flash,
+	post_hook = configs.flash,
 })
 
 plugman.addplug({
