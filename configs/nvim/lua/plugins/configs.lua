@@ -50,7 +50,9 @@ M.fzf = function()
 end
 
 M.mini = function()
-	require("mini.files").setup()
+	require("mini.files").setup({
+		windows = { preview = true }
+	})
 	vim.keymap.set("n", "<leader>e", MiniFiles.open, { desc = "MiniFile" })
 
 	require("mini.icons").setup()
