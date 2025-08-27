@@ -7,6 +7,7 @@ if status is-interactive
 	alias vim 'nvim'
 	alias v 'nvim'
 	alias vi 'nvim (fzf)'
+	alias vo 'set file (fzf) && cd (dirname $file) && nvim (basename $file)'
 	alias ch 'cd (fzf --walker=dir,hidden --walker-root=$HOME)'
 	alias mkdir 'mkdir -p'
 
