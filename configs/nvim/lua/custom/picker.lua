@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 M.picker = {
 	buf = -1,
 	win = -1,
@@ -38,24 +38,24 @@ M.createFloatingWin = function(opts)
 	return { buf = buf, win = win }
 end
 
----@class picker_opts table
+---@class opts table
 ---@field path string Directory to search files in (relative)
 ---@field preview string Preview command
-M.open_picker = function(picker_opts)
-	picker_opts = picker_opts or {}
+M.open_picker = function(opts)
+	opts = opts or {}
 
 	M.picker = M.createFloatingWin({ buf = M.picker.buf, title = "Test Picker" })
 	local buf = M.picker.buf
 
-	if not picker_opts.path then
-		picker_opts.path = "./"
+	if not opts.path then
+		opts.path = "./"
 	end
 
-	if not picker_opts.preview then
-		picker_opts.preview = "'bat --color=always {}'"
+	if not opts.preview then
+		opts.preview = "'bat --color=always {}'"
 	end
 
-	local cmd = "fzf --walker-root=" .. picker_opts.path .. " --preview=" .. picker_opts.preview
+	local cmd = "fzf --walker-root=" .. opts.path .. " --preview=" .. opts.preview
 	vim.fn.jobstart(cmd, {
 		term = true,
 		on_exit = function()
