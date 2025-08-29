@@ -58,6 +58,7 @@ M.mini = function()
 	require("mini.icons").setup()
 	MiniIcons.mock_nvim_web_devicons()
 
+	require("mini.pick").setup()
 	require("mini.ai").setup()
 	require("mini.align").setup()
 	require("mini.comment").setup()
