@@ -33,35 +33,30 @@ end
 
 M.open_picker = function(opts)
 	opts = opts or {}
-
-	M.picker = M.createFloatingWin({ buf = M.picker.buf, title = "Test Picker" })
-	local buf = M.picker.buf
-
-	if not opts.path then
-		opts.path = "./"
-	end
-
-	if not opts.preview then
-		opts.preview = "'bat --color=always {}'"
-	end
-
-	local cmd = "fzf --walker-root=" .. opts.path .. " --preview=" .. opts.preview
-	vim.fn.jobstart(cmd, {
+	M.picker = M.createFloatingWin({ buf = M.picker.buf, title = opts.name })
+	vim.fn.jobstart(opts.cmd, {
 		term = true,
-		on_exit = function()
-			local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+		on_exit = opts.exit,
+	})
+	vim.cmd.startinsert()
+end
+
+M.files = function()
+	M.open_picker({
+		cmd = "fzf --preview='bat --color=always {}'",
+		exit = function()
+			local lines = vim.api.nvim_buf_get_lines(M.picker.buf, 0, -1, false)
 			local selected_file = lines[1]
 			if selected_file and vim.fn.filereadable(selected_file) == 1 then
 				vim.api.nvim_win_close(M.picker.win, true)
 				vim.cmd("edit " .. vim.fn.fnameescape(selected_file))
 			end
-			vim.api.nvim_buf_delete(buf, { force = true })
+			vim.api.nvim_buf_delete(M.picker.buf, { force = true })
 		end,
 	})
-	vim.cmd.startinsert()
 end
 
-vim.api.nvim_create_user_command("Picker", M.open_picker, {})
+vim.api.nvim_create_user_command("Picker", M.files, {})
 vim.keymap.set("n", "<leader>ts", vim.cmd.Picker, { desc = "Custom Picker" })
 
 return M
