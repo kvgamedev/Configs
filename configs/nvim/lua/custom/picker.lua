@@ -4,13 +4,6 @@ M.picker = {
 	win = -1,
 }
 
----@class opts table
----@field width number
----@field height number
----@field buf number
----@field style string
----@field border string
----@field title string
 M.createFloatingWin = function(opts)
 	opts = opts or {}
 	local width = opts.width or math.floor(vim.o.columns * 0.8)
@@ -38,9 +31,6 @@ M.createFloatingWin = function(opts)
 	return { buf = buf, win = win }
 end
 
----@class opts table
----@field path string Directory to search files in (relative)
----@field preview string Preview command
 M.open_picker = function(opts)
 	opts = opts or {}
 
