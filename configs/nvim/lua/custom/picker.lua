@@ -9,12 +9,8 @@ M.createFloatingWin = function(opts)
 	local width = opts.width or math.floor(vim.o.columns * 0.8)
 	local height = opts.height or math.floor(vim.o.lines * 0.8)
 	local buf = nil
-	if vim.api.nvim_buf_is_valid(opts.buf) then
-		buf = opts.buf
-	else
-		buf = vim.api.nvim_create_buf(false, true)
-	end
-
+	if vim.api.nvim_buf_is_valid(opts.buf) then buf = opts.buf
+	else buf = vim.api.nvim_create_buf(false, true) end
 	local config = {
 		relative = "editor",
 		width = width,
@@ -27,7 +23,6 @@ M.createFloatingWin = function(opts)
 		title_pos = "center",
 	}
 	local win = vim.api.nvim_open_win(buf, true, config)
-
 	return { buf = buf, win = win }
 end
 
@@ -43,7 +38,7 @@ end
 
 M.files = function()
 	M.open_picker({
-		cmd = "fzf --preview='bat --color=always {}'",
+		cmd = "fzf",
 		exit = function()
 			local lines = vim.api.nvim_buf_get_lines(M.picker.buf, 0, -1, false)
 			local selected_file = lines[1]
