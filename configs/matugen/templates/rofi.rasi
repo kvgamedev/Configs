@@ -51,6 +51,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
+    border-radius:               10px;
     background-image:            url("{{image}}", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
