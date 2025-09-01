@@ -4,8 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
 o.swapfile = false
-o.number = true
-o.relativenumber = true
+o.number = false
+o.relativenumber = false
 o.clipboard = "unnamedplus"
 o.tabstop = 4
 o.shiftwidth = 4

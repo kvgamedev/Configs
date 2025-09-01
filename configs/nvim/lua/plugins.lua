@@ -15,7 +15,7 @@ vim.pack.add({
 })
 
 -- Colorscheme
-require("catppuccin").setup({ transparent_background = false })
+require("catppuccin").setup({ transparent_background = true })
 vim.cmd("colorscheme catppuccin")
 
 --- @diagnostic disable-next-line:undefined-field
