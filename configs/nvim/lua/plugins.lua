@@ -28,6 +28,7 @@ local hipatterns = require("mini.hipatterns")
 local extras = require("mini.extra")
 files.setup({ windows = { preview = true } })
 picker.setup()
+vim.ui.select = picker.ui_select
 icons.setup()
 icons.mock_nvim_web_devicons()
 require("mini.ai").setup()
