@@ -6,6 +6,7 @@ vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	"https://github.com/nvim-mini/mini.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/folke/which-key.nvim",
