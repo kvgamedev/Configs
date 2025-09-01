@@ -1,10 +1,16 @@
--- vim.keymap.set({ "n" }, "<leader>w", "<c-w>", { desc = "Window" }) -- this or using proxy in which-key
-vim.keymap.set({ "n", "v", "o" }, "<A-l>", "G", { desc = "Last Line" })
-vim.keymap.set({ "n", "v", "o" }, "<A-h>", "gg", { desc = "First Line" })
-vim.keymap.set({ "n", "v", "o" }, "<S-l>", "$", { desc = "Last Character" })
-vim.keymap.set({ "n", "v", "o" }, "<S-h>", "0", { desc = "First Character" })
-vim.keymap.set({ "n" }, "<Esc>", vim.cmd.nohlsearch, { desc = "Remove Search Highlights" })
-vim.keymap.set({ "n" }, "<c-d>", "<c-d>zz", { desc = "Jump Down Half Page and Recenter cursor" })
-vim.keymap.set({ "n" }, "<c-u>", "<c-u>zz", { desc = "Jump Up Half Page and Recenter cursor" })
-vim.keymap.set({ "n" }, "n", "nzz", { desc = "Next Match and Recenter" })
-vim.keymap.set({ "n" }, "N", "Nzz", { desc = "Previous Match and Recenter" })
+local map = function(mode, key, command, description)
+	vim.keymap.set(mode, key, command, { desc = description })
+end
+
+-- map({ "n" }, "<leader>w", "<c-w>", "Window" ) -- this or using proxy in which-key
+map({ "n", "v", "o" }, "<A-l>", "G", "Last Line" )
+map({ "n", "v", "o" }, "<A-h>", "gg", "First Line" )
+map({ "n", "v", "o" }, "<S-l>", "$", "Last Character" )
+map({ "n", "v", "o" }, "<S-h>", "0", "First Character" )
+
+map({ "n" }, "<Esc>", vim.cmd.nohlsearch, "Remove Search Highlights" )
+
+map({ "n" }, "<c-d>", "<c-d>zz", "Jump Down Half Page and Recenter cursor" )
+map({ "n" }, "<c-u>", "<c-u>zz", "Jump Up Half Page and Recenter cursor" )
+map({ "n" }, "n", "nzz", "Next Match and Recenter" )
+map({ "n" }, "N", "Nzz", "Previous Match and Recenter" )

@@ -1,17 +1,19 @@
-vim.api.nvim_create_autocmd("TextYankPost", {
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("TextYankPost", {
 	callback = function()
 		vim.hl.on_yank()
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimResized", {
+autocmd("VimResized", {
 	callback = function()
 		vim.cmd("tabdo wimcd =")
 		vim.cmd("tabnext" .. vim.fn.tabpagenr())
 	end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
+autocmd("LspAttach", {
 	once = true,
 	callback = function()
 		vim.keymap.set("n", "gl", "<Nop>", { desc = "LSP" })
