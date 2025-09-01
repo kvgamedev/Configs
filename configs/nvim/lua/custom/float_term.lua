@@ -75,7 +75,7 @@ vim.keymap.set("n", "<c-w>g", function()
 	M.startcmd({ title = "LazyGit", command = "lazygit" })
 end, { desc = "Lazygit" })
 vim.keymap.set("n", "<c-w>b", function()
-	M.startcmd({ title = "Bottom", command = "btm" })
-end, { desc = "Bottom" })
+	M.startcmd({ title = "BTop", command = "btop" })
+end, { desc = "BTop" })
 
 return M
