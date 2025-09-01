@@ -13,12 +13,12 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font:                        "NotoSansM Nerd Font 10";
-    background:                  #161217;
-    background-alt:              #3d373d;
-    foreground:                  #e9e0e7;
-    selected:                    #5c386b;
-    active:                      #504255;
-    urgent:                      #663b3a;
+    background:                  #121318;
+    background-alt:              #38393f;
+    foreground:                  #e3e2e9;
+    selected:                    #314578;
+    active:                      #404659;
+    urgent:                      #5a3d59;
 }
 
 /*****----- Main Window -----*****/
@@ -51,7 +51,8 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("/home/kv/Wallpapers/cross-mountain-with-sun-shining-it.jpg", height);
+    border-radius:               10px;
+    background-image:            url("/home/kv/Wallpapers/landscape-rocks-3840x2160-11016.jpg", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }
