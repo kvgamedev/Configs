@@ -124,4 +124,4 @@ require("conform").setup({
 		cpp = { "clang-format" },
 	},
 })
-vim.keymap.set("n", "glf", require("conform").format, { desc = "Format Buffer" })
+map("n", "glf", require("conform").format, "Format Buffer")

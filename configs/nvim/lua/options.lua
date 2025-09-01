@@ -1,6 +1,8 @@
 local o = vim.o
+
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
+
 o.swapfile = false
 o.number = true
 o.relativenumber = true
@@ -31,5 +33,6 @@ o.winborder = "rounded"
 o.listchars = "tab:  ,trail:"
 o.cursorline = false
 o.termguicolors = true
+o.signcolumn = "yes"
 -- o.guicursor =
 -- 	"n:block-MiniStatusLineModeNormal,i:block-MiniStatusLineModeInsert,v:block-MiniStatusLineModeVisual,r:block-MiniStatusLineModeReplace,t:block-MiniStatusLineModeOther"
