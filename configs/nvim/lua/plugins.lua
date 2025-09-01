@@ -48,6 +48,7 @@ require("mini.diff").setup({
 })
 extras.setup()
 
+map("n", "<leader>s", "<Nop>", "Search")
 map("n", "<leader>e", files.open, "Explorer")
 map("n", "<leader>f", picker.builtin.files, "Files")
 map("n", "<leader>/", picker.builtin.grep_live, "Grep")

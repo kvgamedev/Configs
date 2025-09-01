@@ -7,6 +7,7 @@ bluez
 bluez-utils
 brave-bin
 brightnessctl
+btop
 clang
 cliphist
 dkms
@@ -22,7 +23,6 @@ git
 grim
 gst-plugin-pipewire
 gtk4-layer-shell
-htop
 hyprland
 imagemagick
 iwd
@@ -58,11 +58,13 @@ slurp
 smartmontools
 sof-firmware
 starship
+stylua
 swww
 ttf-noto-nerd
 uwsm
 vim
 waybar
+wev
 wget
 wireless_tools
 wireplumber
