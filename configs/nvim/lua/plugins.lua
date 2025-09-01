@@ -9,15 +9,16 @@ vim.pack.add({
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/folke/which-key.nvim",
-	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
 	"https://github.com/stevearc/conform.nvim",
-}, { load = false })
+})
 
 -- Colorscheme
 require("catppuccin").setup({ transparent_background = false })
 vim.cmd("colorscheme catppuccin")
+
+--- @diagnostic disable-next-line:undefined-field
 require("lualine").setup()
 
 local files = require("mini.files")
@@ -28,7 +29,7 @@ local extras = require("mini.extra")
 files.setup({ windows = { preview = true } })
 picker.setup()
 icons.setup()
-require("mini.icons").mock_nvim_web_devicons()
+icons.mock_nvim_web_devicons()
 require("mini.ai").setup()
 require("mini.align").setup()
 require("mini.comment").setup()
@@ -37,6 +38,13 @@ require("mini.notify").setup()
 require("mini.operators").setup()
 require("mini.bracketed").setup()
 require("mini.tabline").setup()
+require("mini.git").setup()
+require("mini.diff").setup({
+	view = {
+		style = "sign",
+		signs = { add = "▏", change = "▏", delete = "▏" },
+	},
+})
 extras.setup()
 
 map("n", "<leader>e", files.open, "Explorer")
