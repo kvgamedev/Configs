@@ -5,15 +5,15 @@ end
 vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	"https://github.com/nvim-mini/mini.nvim",
-	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
-	"https://github.com/nvim-treesitter/nvim-treesitter",
-	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/folke/flash.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/folke/which-key.nvim",
-	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/nvim-treesitter/nvim-treesitter",
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
-})
+	"https://github.com/stevearc/conform.nvim",
+}, { load = false })
 
 -- Colorscheme
 require("catppuccin").setup({ transparent_background = false })
@@ -103,11 +103,11 @@ wk.add({
 	{ "<leader>w", proxy = "<c-w>", desc = "Window" },
 })
 
--- ---@diagnostic disable: missing-fields
--- require("nvim-treesitter").setup({
--- 	auto_install = true,
--- 	highlight = { enable = true },
--- })
+---@diagnostic disable: missing-fields
+require("nvim-treesitter.configs").setup({
+	auto_install = true,
+	highlight = { enable = true },
+})
 
 require("conform").setup({
 	formatters_by_ft = {
